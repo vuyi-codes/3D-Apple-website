@@ -404,6 +404,160 @@ body {
     }
   }
 
+  /* ── Shared page-level button utilities ──────────────────────────────────
+     Used by Mac Landing, Product Detail, Compare, Store, etc.
+     Defined once here so every new page can reference them.              */
+  .btn-primary-pill {
+    @apply inline-block bg-primary text-white py-2 px-6 rounded-full font-semibold text-sm cursor-pointer hover:bg-white hover:text-black transition-all duration-300 ease-in-out;
+  }
+
+  .btn-ghost-pill {
+    @apply inline-block text-primary py-2 px-4 rounded-full font-semibold text-sm cursor-pointer hover:text-white transition-all duration-300 ease-in-out;
+  }
+
+  /* ── Mac Landing page ─────────────────────────────────────────────────── */
+  #mac-landing {
+    @apply pt-[7vh]; /* offset for fixed navbar */
+  }
+
+  /* Hero */
+  #mac-hero {
+    @apply col-center gap-6 py-32 px-5 text-center bg-black;
+
+    .mac-eyebrow {
+      @apply text-dark-100 text-sm font-medium tracking-widest uppercase;
+    }
+
+    h1 {
+      @apply font-semibold text-4xl lg:text-7xl text-white max-w-3xl;
+    }
+
+    .mac-hero-sub {
+      @apply text-dark-100 text-lg lg:text-xl max-w-xl;
+    }
+
+    .mac-hero-actions {
+      @apply flex-center gap-4 flex-wrap mt-2;
+    }
+  }
+
+  /* Lineup grid */
+  #mac-lineup {
+    @apply py-20 px-5 bg-black;
+
+    .mac-section-title {
+      @apply text-white font-semibold text-3xl lg:text-5xl text-center mb-16;
+    }
+
+    .mac-lineup-grid {
+      @apply container mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8 2xl:px-0;
+    }
+  }
+
+  /* Model card */
+  .mac-card {
+    /* Cards start invisible + shifted up — GSAP reveals them on scroll */
+    @apply relative flex flex-col bg-[#1d1d1f] rounded-3xl p-8 opacity-0 translate-y-8;
+
+    .mac-card-badge {
+      @apply absolute top-5 right-5 bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full;
+    }
+
+    .mac-card-swatches {
+      @apply flex gap-2 mb-6;
+    }
+
+    .mac-swatch {
+      @apply block size-4 rounded-full ring-1 ring-white/20;
+    }
+
+    /* Gradient placeholder until real product images are in /public */
+    .mac-card-img-placeholder {
+      @apply w-full h-48 rounded-2xl mb-6;
+      background: linear-gradient(135deg, #2e2e30 0%, #1a1a1c 100%);
+    }
+
+    .mac-card-body {
+      @apply flex flex-col gap-3 flex-1;
+    }
+
+    .mac-card-chip {
+      @apply text-dark-100 text-xs font-medium uppercase tracking-widest;
+    }
+
+    .mac-card-name {
+      @apply text-white font-semibold text-2xl;
+    }
+
+    .mac-card-highlight {
+      @apply text-white font-semibold text-lg;
+    }
+
+    .mac-card-desc {
+      @apply text-dark-100 text-sm leading-relaxed flex-1;
+    }
+
+    .mac-card-pricing {
+      @apply flex flex-col gap-0.5 mt-4;
+    }
+
+    .mac-card-price {
+      @apply text-white font-semibold text-xl;
+    }
+
+    .mac-card-monthly {
+      @apply text-dark-100 text-sm;
+    }
+
+    .mac-card-actions {
+      @apply flex gap-3 mt-4 flex-wrap;
+    }
+  }
+
+  /* Why Mac */
+  #why-mac {
+    @apply py-24 px-5 bg-[#0a0a0a];
+
+    .mac-section-title {
+      @apply text-white font-semibold text-3xl lg:text-5xl text-center mb-16;
+    }
+
+    .why-mac-grid {
+      @apply container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 2xl:px-0;
+    }
+  }
+
+  .why-mac-cell {
+    /* Starts invisible — GSAP fromTo reveals on scroll */
+    @apply flex flex-col gap-4 bg-[#1d1d1f] rounded-3xl p-8 opacity-0 translate-y-5;
+
+    .why-mac-icon {
+      @apply size-8;
+    }
+
+    .why-mac-cell-title {
+      @apply text-white font-semibold text-xl;
+    }
+
+    .why-mac-cell-body {
+      @apply text-dark-100 text-sm leading-relaxed;
+    }
+  }
+
+  /* Compare CTA */
+  #mac-compare-cta {
+    @apply col-center gap-6 py-28 px-5 bg-black text-center;
+
+    .mac-eyebrow {
+      @apply text-dark-100 text-sm font-medium tracking-widest uppercase;
+    }
+
+    h2 {
+      @apply text-white font-semibold text-3xl lg:text-5xl max-w-2xl;
+    }
+  }
+  /* ── End Mac Landing ──────────────────────────────────────────────────── */
+
   footer {
     @apply container mx-auto py-7 max-lg:px-5;
 

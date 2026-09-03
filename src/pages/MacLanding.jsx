@@ -1,18 +1,204 @@
-// Mac Landing page — Step 3 will build this out fully.
-// Shows the full Mac lineup (MacBook Air, Pro 14", Pro 16") with pricing,
-// scroll-reveal cards, and links to individual product detail pages.
+// Mac Landing page — /mac
+//
+// Sections:
+//  1. Hero          — full-bleed headline + sub-copy, GSAP fade+slide up on mount
+//  2. Lineup Grid   — 3 model cards with staggered scroll-reveal (same pattern
+//                     as Highlights.jsx: gsap.to + stagger + ScrollTrigger)
+//  3. Why Mac       — 6-cell feature grid, fade-in on scroll (fromTo pattern
+//                     matching Performance.jsx)
+//  4. Compare CTA   — simple centred banner linking to /compare
+//
+// All data comes from constants/index.js — no API calls.
+import { useRef } from "react";
+import { Link } from "react-router-dom";
+import { useGSAP } from "@gsap/react";
+import { useMediaQuery } from "react-responsive";
+import gsap from "gsap";
+import { macLineup, whyMac } from "../constants";
 import Footer from "../components/Footer";
 
-const MacLanding = () => {
+// ─── Mac Hero ────────────────────────────────────────────────────────────────
+const MacHero = () => {
+    const heroRef = useRef(null);
+
+    useGSAP(() => {
+        // Staggered fade + slide-up on mount (no ScrollTrigger — immediate entry)
+        gsap.fromTo(
+            "#mac-hero .mac-hero-animate",
+            { opacity: 0, y: 40 },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 0.9,
+                stagger: 0.15,
+                ease: "power2.out",
+            }
+        );
+    }, { scope: heroRef });
+
     return (
-        <>
-            <main className="pt-16 min-h-screen bg-black text-white flex-center flex-col gap-8">
-                <h1 className="text-4xl font-semibold">Mac</h1>
-                <p className="text-dark-100 text-lg">Coming soon — built in Step 3.</p>
-            </main>
-            <Footer />
-        </>
+        <section id="mac-hero" ref={heroRef}>
+            <div className="mac-hero-animate">
+                <p className="mac-eyebrow">Mac</p>
+                <h1>The best Mac for every ambition.</h1>
+            </div>
+            <p className="mac-hero-animate mac-hero-sub">
+                Powered by Apple silicon. Built for Apple Intelligence.
+                Designed to go anywhere you do.
+            </p>
+            <div className="mac-hero-animate mac-hero-actions">
+                <Link to="/mac/macbook-pro-14" className="btn-primary-pill">
+                    Shop MacBook Pro
+                </Link>
+                <Link to="/compare" className="btn-ghost-pill">
+                    Compare all models →
+                </Link>
+            </div>
+        </section>
     );
 };
+
+// ─── Model Card ──────────────────────────────────────────────────────────────
+// Individual card in the lineup grid.
+const ModelCard = ({ model }) => {
+    const { slug, name, chip, highlight, description, price, monthly, colors, badge } = model;
+
+    return (
+        <article className="mac-card">
+            {/* Optional "Most Popular" badge */}
+            {badge && <span className="mac-card-badge">{badge}</span>}
+
+            {/* Colour swatches — decorative only on the landing page;
+                the real colour picker lives on the Product Detail page */}
+            <div className="mac-card-swatches">
+                {colors.map((hex) => (
+                    <span
+                        key={hex}
+                        className="mac-swatch"
+                        style={{ backgroundColor: hex }}
+                        aria-label={hex}
+                    />
+                ))}
+            </div>
+
+            {/* Placeholder image area — shows a gradient tile until real
+                product renders are dropped into /public */}
+            <div className="mac-card-img-placeholder" aria-hidden="true" />
+
+            <div className="mac-card-body">
+                <p className="mac-card-chip">{chip}</p>
+                <h2 className="mac-card-name">{name}</h2>
+                <p className="mac-card-highlight">{highlight}</p>
+                <p className="mac-card-desc">{description}</p>
+
+                <div className="mac-card-pricing">
+                    <span className="mac-card-price">From ${price.toLocaleString()}</span>
+                    <span className="mac-card-monthly">or ${monthly}/mo.</span>
+                </div>
+
+                <div className="mac-card-actions">
+                    <Link to={`/mac/${slug}`} className="btn-primary-pill">
+                        Learn more
+                    </Link>
+                    <Link to="/store" className="btn-ghost-pill">
+                        Buy →
+                    </Link>
+                </div>
+            </div>
+        </article>
+    );
+};
+
+// ─── Lineup Grid ─────────────────────────────────────────────────────────────
+const LineupGrid = () => {
+    const isMobile = useMediaQuery({ query: "(max-width: 1024px)" });
+
+    useGSAP(() => {
+        // Staggered reveal — identical pattern to Highlights.jsx
+        gsap.to(".mac-card", {
+            scrollTrigger: {
+                trigger: "#mac-lineup",
+                start: isMobile ? "top 80%" : "top 60%",
+            },
+            opacity: 1,
+            y: 0,
+            stagger: 0.2,
+            duration: 0.9,
+            ease: "power2.out",
+        });
+    }, [isMobile]);
+
+    return (
+        <section id="mac-lineup">
+            <h2 className="mac-section-title">Choose your Mac.</h2>
+            <div className="mac-lineup-grid">
+                {macLineup.map((model) => (
+                    <ModelCard key={model.id} model={model} />
+                ))}
+            </div>
+        </section>
+    );
+};
+
+// ─── Why Mac ─────────────────────────────────────────────────────────────────
+const WhyMac = () => {
+    useGSAP(() => {
+        // fromTo fade — matches Performance.jsx pattern
+        gsap.fromTo(
+            ".why-mac-cell",
+            { opacity: 0, y: 20 },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                stagger: 0.12,
+                ease: "power1.out",
+                scrollTrigger: {
+                    trigger: "#why-mac",
+                    start: "top 70%",
+                },
+            }
+        );
+    });
+
+    return (
+        <section id="why-mac">
+            <h2 className="mac-section-title">Why Mac.</h2>
+            <div className="why-mac-grid">
+                {whyMac.map(({ id, icon, title, body }) => (
+                    <div key={id} className="why-mac-cell">
+                        <img src={icon} alt={title} className="why-mac-icon" />
+                        <h3 className="why-mac-cell-title">{title}</h3>
+                        <p className="why-mac-cell-body">{body}</p>
+                    </div>
+                ))}
+            </div>
+        </section>
+    );
+};
+
+// ─── Compare CTA ─────────────────────────────────────────────────────────────
+const CompareCTA = () => (
+    <section id="mac-compare-cta">
+        <p className="mac-eyebrow">Not sure which Mac?</p>
+        <h2>Compare every model side by side.</h2>
+        <Link to="/compare" className="btn-primary-pill">
+            Compare Macs
+        </Link>
+    </section>
+);
+
+// ─── Page ─────────────────────────────────────────────────────────────────────
+const MacLanding = () => (
+    <>
+        <main id="mac-landing">
+            <MacHero />
+            <LineupGrid />
+            <WhyMac />
+            <CompareCTA />
+        </main>
+        <Footer />
+    </>
+);
 
 export default MacLanding;

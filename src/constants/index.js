@@ -123,6 +123,95 @@ const featureSequence = [
     { videoPath: "/videos/feature-5.mp4", boxClass: ".box5", delay: 0 },
 ];
 
+// ─── Mac Landing page data ────────────────────────────────────────────────────
+
+// Three Mac models shown in the lineup grid.
+// `slug` maps to the :model param used by the Product Detail route (/mac/:model).
+// `chip`, `highlight`, `price`, `monthly` are display-only mock values.
+const macLineup = [
+    {
+        id: "macbook-air-13",
+        slug: "macbook-air-13",
+        name: "MacBook Air 13\"",
+        chip: "Apple M3 chip",
+        highlight: "Strikingly thin. Incredibly capable.",
+        description:
+            "With up to 18 hours of battery life and the power of M3, MacBook Air is the world's best consumer laptop.",
+        price: 1099,
+        monthly: 92,
+        colors: ["#f5e6c8", "#c1b8a5", "#a8c4b8", "#6e6e73"],
+        badge: null,
+    },
+    {
+        id: "macbook-pro-14",
+        slug: "macbook-pro-14",
+        name: "MacBook Pro 14\"",
+        chip: "Apple M4 Pro chip",
+        highlight: "Supercharged for pros.",
+        description:
+            "The M4 Pro chip, a stunning Liquid Retina XDR display, and up to 24 hours of battery life make this the ultimate pro laptop.",
+        price: 1999,
+        monthly: 167,
+        colors: ["#2e2c2e", "#e3d5c0"],
+        badge: "Most Popular",
+    },
+    {
+        id: "macbook-pro-16",
+        slug: "macbook-pro-16",
+        name: "MacBook Pro 16\"",
+        chip: "Apple M4 Max chip",
+        highlight: "The most powerful Mac laptop ever.",
+        description:
+            "M4 Max with up to 128 GB of unified memory, a gorgeous 16\" XDR display, and pro connectivity for the most demanding workflows.",
+        price: 2499,
+        monthly: 208,
+        colors: ["#2e2c2e", "#e3d5c0"],
+        badge: null,
+    },
+];
+
+// "Why Mac" reasons block — rendered in the scroll-reveal section.
+const whyMac = [
+    {
+        id: "wm1",
+        icon: "/feature-icon1.svg",
+        title: "Apple Intelligence",
+        body: "Built-in AI that writes, summarises, and creates — privately and securely on device.",
+    },
+    {
+        id: "wm2",
+        icon: "/feature-icon2.svg",
+        title: "All-day Battery",
+        body: "Up to 22 hours on a single charge. Work a full day and still have power to spare.",
+    },
+    {
+        id: "wm3",
+        icon: "/feature-icon3.svg",
+        title: "Liquid Retina XDR",
+        body: "1,000 nits sustained brightness, 1,600 nits peak. Every pixel precisely calibrated.",
+    },
+    {
+        id: "wm4",
+        icon: "/feature-icon4.svg",
+        title: "Continuity",
+        body: "iPhone, iPad, and Mac work together seamlessly — AirDrop, Handoff, and Universal Clipboard.",
+    },
+    {
+        id: "wm5",
+        icon: "/feature-icon5.svg",
+        title: "macOS Sequoia",
+        body: "The world's most advanced desktop operating system, updated every year — free.",
+    },
+    {
+        id: "wm6",
+        icon: "/feature-icon1.svg",
+        title: "ProRes & Final Cut",
+        body: "Hardware-accelerated ProRes video engine. Edit multiple 4K streams without breaking a sweat.",
+    },
+];
+
+// ─────────────────────────────────────────────────────────────────────────────
+
 const footerLinks = [
     { label: "Privacy Policy", link: "#" },
     { label: "Terms of Use", link: "#" },
@@ -135,8 +224,10 @@ export {
     features,
     featureSequence,
     footerLinks,
+    macLineup,
     navLinks,
     noChangeParts,
     performanceImages,
     performanceImgPositions,
+    whyMac,
 };
