@@ -71,12 +71,12 @@ const ModelCard = ({ model }) => {
             {/* Colour swatches — decorative only on the landing page;
                 the real colour picker lives on the Product Detail page */}
             <div className="mac-card-swatches">
-                {colors.map((hex) => (
+                {colors.map(({ hex, label }) => (
                     <span
                         key={hex}
                         className="mac-swatch"
                         style={{ backgroundColor: hex }}
-                        aria-label={hex}
+                        aria-label={label}
                     />
                 ))}
             </div>

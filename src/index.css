@@ -683,6 +683,106 @@ body {
   }
   /* ── End Product Detail ───────────────────────────────────────────────── */
 
+  /* ── Compare page (/compare) ─────────────────────────────────────────── */
+  #cmp-page {
+    @apply pt-[7vh] bg-black text-white;
+  }
+
+  #cmp-hero {
+    @apply col-center gap-5 py-24 px-5 text-center;
+
+    h1 {
+      @apply font-semibold text-4xl lg:text-6xl text-white max-w-3xl;
+    }
+
+    .cmp-hero-sub {
+      @apply text-dark-100 text-lg max-w-xl;
+    }
+  }
+
+  .cmp-eyebrow {
+    @apply text-dark-100 text-sm font-medium tracking-widest uppercase;
+  }
+
+  .cmp-toggles {
+    @apply flex-center flex-wrap gap-3 mt-4;
+  }
+
+  .cmp-chip {
+    @apply py-2 px-4 rounded-full text-sm font-semibold border border-dark-200
+           text-dark-100 cursor-pointer transition-all duration-300 ease-in-out
+           hover:border-white hover:text-white;
+  }
+
+  .cmp-chip-on {
+    @apply bg-white text-black border-white;
+  }
+
+  #cmp-table {
+    @apply pb-20 px-5;
+  }
+
+  /* Horizontal scroll on small screens so all columns stay readable */
+  .cmp-scroll {
+    @apply container mx-auto overflow-x-auto 2xl:px-0;
+  }
+
+  .cmp-grid {
+    @apply w-full min-w-[48rem] border-collapse;
+
+    .cmp-label-col {
+      @apply w-28 lg:w-40;
+    }
+
+    .cmp-col-head {
+      @apply align-top text-left px-5 pb-10;
+
+      .cmp-badge {
+        @apply inline-block bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full mb-3;
+      }
+
+      .cmp-col-name {
+        @apply text-white font-semibold text-xl lg:text-2xl;
+      }
+
+      .cmp-col-chip {
+        @apply text-dark-100 text-xs uppercase tracking-widest mt-1;
+      }
+
+      .cmp-col-price {
+        @apply text-white font-semibold mt-3 mb-3;
+      }
+
+      .cmp-col-swatches {
+        @apply flex gap-2 mb-5;
+      }
+    }
+
+    tbody {
+      .cmp-row {
+        /* Hidden until GSAP scroll reveal */
+        @apply border-t border-dark-200 opacity-0;
+
+        th {
+          @apply text-dark-100 font-medium text-sm py-5 pr-4 text-left align-top;
+        }
+
+        td {
+          @apply text-white font-regular text-sm py-5 px-5 align-top leading-relaxed;
+        }
+      }
+    }
+  }
+
+  #cmp-cta {
+    @apply col-center gap-6 py-24 px-5 bg-[#0a0a0a] text-center;
+
+    h2 {
+      @apply text-white font-semibold text-3xl lg:text-5xl;
+    }
+  }
+  /* ── End Compare ──────────────────────────────────────────────────────── */
+
   footer {
     @apply container mx-auto py-7 max-lg:px-5;
 
