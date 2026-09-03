@@ -125,9 +125,15 @@ const featureSequence = [
 
 // ─── Mac Landing page data ────────────────────────────────────────────────────
 
-// Three Mac models shown in the lineup grid.
-// `slug` maps to the :model param used by the Product Detail route (/mac/:model).
-// `chip`, `highlight`, `price`, `monthly` are display-only mock values.
+// Three Mac models shown in the lineup grid and Product Detail page.
+// `slug`       — matches the :model URL param (/mac/:model)
+// `storeScale` — which Zustand scale value selects this model's 3D model
+//                (0.06 = 14", 0.08 = 16"; Air uses the 14" model as stand-in)
+// `colorMap`   — maps display hex (used by the UI swatch) to the nearest
+//                Zustand `color` value accepted by the 3D model material.
+//                Only the two existing store colors (#adb5bd, #2e2c2e) are
+//                supported by the 3D models today; extra swatches map to the
+//                closest match so the 3D model still responds correctly.
 const macLineup = [
     {
         id: "macbook-air-13",
@@ -139,8 +145,32 @@ const macLineup = [
             "With up to 18 hours of battery life and the power of M3, MacBook Air is the world's best consumer laptop.",
         price: 1099,
         monthly: 92,
-        colors: ["#f5e6c8", "#c1b8a5", "#a8c4b8", "#6e6e73"],
         badge: null,
+        storeScale: 0.06, // renders the 14" model as a stand-in
+        // colorMap: { swatchHex: zustandColorValue }
+        colorMap: {
+            "#f5e6c8": "#adb5bd",
+            "#c1b8a5": "#adb5bd",
+            "#a8c4b8": "#adb5bd",
+            "#6e6e73": "#2e2c2e",
+        },
+        colors: [
+            { hex: "#f5e6c8", label: "Starlight" },
+            { hex: "#c1b8a5", label: "Sand" },
+            { hex: "#a8c4b8", label: "Sky Blue" },
+            { hex: "#6e6e73", label: "Midnight" },
+        ],
+        specs: [
+            { label: "Chip",        value: "Apple M3" },
+            { label: "CPU",         value: "8-core CPU" },
+            { label: "GPU",         value: "10-core GPU" },
+            { label: "Memory",      value: "8 GB unified memory" },
+            { label: "Storage",     value: "256 GB SSD" },
+            { label: "Display",     value: "13.6\" Liquid Retina, 2560×1664" },
+            { label: "Battery",     value: "Up to 18 hours" },
+            { label: "Weight",      value: "2.7 lbs (1.24 kg)" },
+            { label: "Ports",       value: "2× USB-C / Thunderbolt 3, MagSafe 3, 3.5 mm" },
+        ],
     },
     {
         id: "macbook-pro-14",
@@ -152,8 +182,27 @@ const macLineup = [
             "The M4 Pro chip, a stunning Liquid Retina XDR display, and up to 24 hours of battery life make this the ultimate pro laptop.",
         price: 1999,
         monthly: 167,
-        colors: ["#2e2c2e", "#e3d5c0"],
         badge: "Most Popular",
+        storeScale: 0.06,
+        colorMap: {
+            "#2e2c2e": "#2e2c2e",
+            "#e3d5c0": "#adb5bd",
+        },
+        colors: [
+            { hex: "#2e2c2e", label: "Space Black" },
+            { hex: "#e3d5c0", label: "Silver" },
+        ],
+        specs: [
+            { label: "Chip",        value: "Apple M4 Pro" },
+            { label: "CPU",         value: "12-core CPU" },
+            { label: "GPU",         value: "20-core GPU" },
+            { label: "Memory",      value: "24 GB unified memory" },
+            { label: "Storage",     value: "512 GB SSD" },
+            { label: "Display",     value: "14.2\" Liquid Retina XDR, 3024×1964" },
+            { label: "Battery",     value: "Up to 24 hours" },
+            { label: "Weight",      value: "3.5 lbs (1.60 kg)" },
+            { label: "Ports",       value: "3× Thunderbolt 5, HDMI, SD card, MagSafe 3" },
+        ],
     },
     {
         id: "macbook-pro-16",
@@ -165,8 +214,27 @@ const macLineup = [
             "M4 Max with up to 128 GB of unified memory, a gorgeous 16\" XDR display, and pro connectivity for the most demanding workflows.",
         price: 2499,
         monthly: 208,
-        colors: ["#2e2c2e", "#e3d5c0"],
         badge: null,
+        storeScale: 0.08,
+        colorMap: {
+            "#2e2c2e": "#2e2c2e",
+            "#e3d5c0": "#adb5bd",
+        },
+        colors: [
+            { hex: "#2e2c2e", label: "Space Black" },
+            { hex: "#e3d5c0", label: "Silver" },
+        ],
+        specs: [
+            { label: "Chip",        value: "Apple M4 Max" },
+            { label: "CPU",         value: "16-core CPU" },
+            { label: "GPU",         value: "40-core GPU" },
+            { label: "Memory",      value: "48 GB unified memory" },
+            { label: "Storage",     value: "1 TB SSD" },
+            { label: "Display",     value: "16.2\" Liquid Retina XDR, 3456×2234" },
+            { label: "Battery",     value: "Up to 22 hours" },
+            { label: "Weight",      value: "4.7 lbs (2.14 kg)" },
+            { label: "Ports",       value: "3× Thunderbolt 5, HDMI, SD card, MagSafe 3" },
+        ],
     },
 ];
 

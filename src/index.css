@@ -558,6 +558,131 @@ body {
   }
   /* ── End Mac Landing ──────────────────────────────────────────────────── */
 
+  /* ── Product Detail page (/mac/:model) ───────────────────────────────── */
+  #pd-page {
+    @apply pt-[7vh] bg-black text-white;
+  }
+
+  /* 3D viewer section — full viewport height */
+  #pd-viewer {
+    @apply relative min-h-screen flex flex-col items-center;
+
+    #pd-viewer-header {
+      @apply text-center pt-12 pb-4 z-10;
+
+      .pd-eyebrow {
+        @apply text-dark-100 text-xs font-medium uppercase tracking-widest mb-2;
+      }
+
+      h1 {
+        @apply font-semibold text-3xl lg:text-5xl text-white;
+      }
+    }
+
+    /* Colour picker row */
+    .pd-controls {
+      @apply flex flex-col items-center gap-2 z-10 mb-2;
+
+      .pd-color-row {
+        @apply flex gap-3;
+      }
+
+      /* Individual colour swatch button */
+      .pd-swatch {
+        @apply size-6 rounded-full cursor-pointer ring-2 ring-transparent
+               transition-all duration-200 hover:scale-110;
+      }
+
+      /* Active swatch gets a white ring (matches homepage .active pattern) */
+      .pd-swatch-active {
+        @apply ring-white scale-110;
+      }
+
+      .pd-color-label {
+        @apply text-dark-100 text-xs font-medium;
+      }
+    }
+
+    /* R3F canvas — fills the rest of the viewer section */
+    #pd-canvas {
+      @apply !w-full !h-[65vh] lg:!h-[75vh] relative z-40;
+    }
+
+    .pd-scroll-hint {
+      @apply text-dark-100 text-xs pb-6 z-10;
+    }
+  }
+
+  /* Specs section */
+  #pd-specs {
+    @apply py-24 bg-[#0a0a0a];
+
+    .pd-specs-inner {
+      @apply container mx-auto px-5 2xl:px-0 flex flex-col lg:flex-row gap-16;
+    }
+
+    .pd-specs-intro {
+      @apply lg:max-w-xs flex flex-col gap-5;
+
+      h2 {
+        @apply font-semibold text-2xl lg:text-4xl text-white;
+      }
+
+      p {
+        @apply text-dark-100 text-sm leading-relaxed;
+      }
+    }
+
+    .pd-specs-table {
+      @apply flex-1 border-collapse;
+
+      /* Each row starts invisible — GSAP fromTo reveals them on scroll */
+      .pd-spec-row {
+        @apply border-b border-dark-200 opacity-0;
+
+        th {
+          @apply text-dark-100 font-medium text-sm py-4 pr-8 text-left w-36 align-top;
+        }
+
+        td {
+          @apply text-white font-regular text-sm py-4 leading-relaxed;
+        }
+      }
+    }
+  }
+
+  /* Buy CTA section */
+  #pd-buy {
+    @apply py-20 bg-black opacity-0;
+
+    .pd-buy-inner {
+      @apply container mx-auto px-5 2xl:px-0
+             flex flex-col lg:flex-row items-start lg:items-center
+             justify-between gap-8;
+    }
+
+    .pd-buy-info {
+      @apply flex flex-col gap-1;
+
+      .pd-buy-name {
+        @apply text-white font-semibold text-xl;
+      }
+
+      .pd-buy-price {
+        @apply text-white font-semibold text-3xl;
+
+        span {
+          @apply text-dark-100 font-regular text-base;
+        }
+      }
+    }
+
+    .pd-buy-actions {
+      @apply flex gap-4 flex-wrap;
+    }
+  }
+  /* ── End Product Detail ───────────────────────────────────────────────── */
+
   footer {
     @apply container mx-auto py-7 max-lg:px-5;
 
