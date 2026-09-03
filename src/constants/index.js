@@ -344,6 +344,53 @@ const aboutTimeline = [
     { year: "2024", title: "Apple Intelligence", body: "On-device AI that writes, summarises, and creates — privately, on your Mac." },
 ];
 
+// Support page — mock topics + FAQ. Search filters this list in the browser only.
+const supportTopics = [
+    { id: "st1", title: "Mac", body: "Setup, macOS, storage, and Apple silicon.", href: "/mac" },
+    { id: "st2", title: "Billing", body: "Orders, bag, and mock checkout questions.", href: "/store" },
+    { id: "st3", title: "Compare", body: "Pick the right MacBook for your work.", href: "/compare" },
+    { id: "st4", title: "Account", body: "Apple ID, iCloud, and sign-in (coming with backend).", href: "/about" },
+];
+
+const supportFaqs = [
+    {
+        id: "faq1",
+        topic: "Mac",
+        question: "How do I choose between MacBook Air and MacBook Pro?",
+        answer: "Air is the everyday laptop — thin, quiet, and all-day battery. Pro adds an XDR display, more ports, and M4 Pro / Max for video, 3D, and compiles. Use Compare to scan specs side by side.",
+    },
+    {
+        id: "faq2",
+        topic: "Mac",
+        question: "Can I change the colour of the 3D model?",
+        answer: "Yes. On a product page, tap a colour swatch. The viewer uses the same Zustand colour state as the homepage MacBook.",
+    },
+    {
+        id: "faq3",
+        topic: "Billing",
+        question: "Is checkout real?",
+        answer: "Not yet. The bag is in-memory only — refresh clears it. Checkout is disabled until the backend ships.",
+    },
+    {
+        id: "faq4",
+        topic: "Billing",
+        question: "Why did my bag empty after I refreshed?",
+        answer: "Cart state lives in Zustand with no persist middleware. That is intentional for this frontend-only phase.",
+    },
+    {
+        id: "faq5",
+        topic: "Account",
+        question: "Can I create an Apple ID here?",
+        answer: "No. There is no auth or API on this site yet. Account flows will land with the backend.",
+    },
+    {
+        id: "faq6",
+        topic: "Mac",
+        question: "The 3D model or video is missing. Is that a bug?",
+        answer: "The app expects files under /public (models, videos, fonts). If those assets are not in the repo, the viewer and hero video will fail to load.",
+    },
+];
+
 // ─────────────────────────────────────────────────────────────────────────────
 
 const footerLinks = [
@@ -367,5 +414,7 @@ export {
     performanceImgPositions,
     storeAccessories,
     storeCategories,
+    supportFaqs,
+    supportTopics,
     whyMac,
 };
