@@ -948,6 +948,88 @@ body {
   }
   /* ── End Store + Cart ─────────────────────────────────────────────────── */
 
+  /* ── About page (/about) ─────────────────────────────────────────────── */
+  #about-page {
+    @apply pt-[7vh] bg-black text-white;
+  }
+
+  #about-hero {
+    @apply col-center gap-6 py-32 px-5 text-center;
+
+    h1 {
+      @apply font-semibold text-5xl lg:text-7xl text-white;
+    }
+
+    .about-hero-sub {
+      @apply text-dark-100 text-lg lg:text-xl max-w-2xl;
+    }
+  }
+
+  .about-eyebrow {
+    @apply text-dark-100 text-sm font-medium tracking-widest uppercase;
+  }
+
+  .about-section-title {
+    @apply text-white font-semibold text-3xl lg:text-5xl text-center mb-16;
+  }
+
+  #about-values {
+    @apply py-24 px-5 bg-[#0a0a0a];
+  }
+
+  .about-values-grid {
+    @apply container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 2xl:px-0;
+  }
+
+  .about-value {
+    @apply bg-[#1d1d1f] rounded-3xl p-8 opacity-0;
+
+    h3 {
+      @apply text-white font-semibold text-2xl mb-3;
+    }
+
+    p {
+      @apply text-dark-100 text-sm leading-relaxed;
+    }
+  }
+
+  #about-timeline {
+    @apply py-24 px-5 bg-black;
+  }
+
+  .about-timeline-list {
+    @apply container mx-auto max-w-3xl flex flex-col gap-12 2xl:px-0;
+  }
+
+  .about-year {
+    @apply flex flex-col sm:flex-row gap-4 sm:gap-10 opacity-0;
+
+    .about-year-num {
+      @apply text-primary font-semibold text-xl sm:w-24 shrink-0;
+    }
+
+    h3 {
+      @apply text-white font-semibold text-xl mb-2;
+    }
+
+    p {
+      @apply text-dark-100 text-sm leading-relaxed;
+    }
+  }
+
+  #about-cta {
+    @apply col-center gap-6 py-24 px-5 bg-[#0a0a0a] text-center;
+
+    h2 {
+      @apply text-white font-semibold text-3xl lg:text-5xl;
+    }
+
+    .about-cta-actions {
+      @apply flex-center flex-wrap gap-4;
+    }
+  }
+  /* ── End About ────────────────────────────────────────────────────────── */
+
   footer {
     @apply container mx-auto py-7 max-lg:px-5;
 

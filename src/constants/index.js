@@ -312,6 +312,38 @@ const storeAccessories = [
 
 const storeCategories = ["All", "Mac", "Accessories"];
 
+// About page — static brand copy. No CMS / no API.
+const aboutValues = [
+    {
+        id: "av1",
+        title: "Privacy",
+        body: "Your data belongs to you. Apple Intelligence runs on device whenever it can, so what you create stays yours.",
+    },
+    {
+        id: "av2",
+        title: "Accessibility",
+        body: "Technology should work for everyone. VoiceOver, Magnifier, and AssistiveTouch are designed in — not bolted on.",
+    },
+    {
+        id: "av3",
+        title: "Environment",
+        body: "Carbon neutral Apple Watch. Recycled aluminium, cobalt, and rare earths. A 2030 goal to be carbon neutral across every product.",
+    },
+    {
+        id: "av4",
+        title: "Design",
+        body: "Hardware, software, and services conceived together. If it isn't essential, it doesn't ship.",
+    },
+];
+
+const aboutTimeline = [
+    { year: "1976", title: "Founded", body: "Steve Jobs, Steve Wozniak, and Ronald Wayne start Apple in a garage in Los Altos." },
+    { year: "1984", title: "Macintosh", body: "The Mac introduces a graphical interface and a mouse to the personal computer." },
+    { year: "2007", title: "iPhone", body: "A phone, an iPod, and an internet communicator — in one device that redefined mobile." },
+    { year: "2020", title: "Apple silicon", body: "M1 begins the transition from Intel. Performance per watt becomes the new benchmark." },
+    { year: "2024", title: "Apple Intelligence", body: "On-device AI that writes, summarises, and creates — privately, on your Mac." },
+];
+
 // ─────────────────────────────────────────────────────────────────────────────
 
 const footerLinks = [
@@ -323,6 +355,8 @@ const footerLinks = [
 ];
 
 export {
+    aboutTimeline,
+    aboutValues,
     features,
     featureSequence,
     footerLinks,
