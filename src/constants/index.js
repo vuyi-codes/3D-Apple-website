@@ -278,6 +278,40 @@ const whyMac = [
     },
 ];
 
+// Store catalog — Macs are derived from macLineup plus a few mock accessories.
+// `category` drives the Store filter chips. No API / no real inventory.
+const storeAccessories = [
+    {
+        id: "magic-keyboard",
+        slug: "magic-keyboard",
+        name: "Magic Keyboard",
+        category: "Accessories",
+        price: 149,
+        description: "A wireless keyboard with a numeric keypad and Touch ID.",
+        colors: [{ hex: "#e3d5c0", label: "Silver" }, { hex: "#2e2c2e", label: "Black" }],
+    },
+    {
+        id: "magic-mouse",
+        slug: "magic-mouse",
+        name: "Magic Mouse",
+        category: "Accessories",
+        price: 99,
+        description: "Multi-Touch surface. Pairs instantly with your Mac.",
+        colors: [{ hex: "#e3d5c0", label: "Silver" }, { hex: "#2e2c2e", label: "Black" }],
+    },
+    {
+        id: "usb-c-hub",
+        slug: "usb-c-hub",
+        name: "USB-C Digital AV Multiport Adapter",
+        category: "Accessories",
+        price: 69,
+        description: "HDMI, USB-A, and USB-C charging in one compact adapter.",
+        colors: [{ hex: "#6e6e73", label: "White" }],
+    },
+];
+
+const storeCategories = ["All", "Mac", "Accessories"];
+
 // ─────────────────────────────────────────────────────────────────────────────
 
 const footerLinks = [
@@ -297,5 +331,7 @@ export {
     noChangeParts,
     performanceImages,
     performanceImgPositions,
+    storeAccessories,
+    storeCategories,
     whyMac,
 };

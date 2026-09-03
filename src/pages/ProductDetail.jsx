@@ -36,7 +36,7 @@ const ProductDetail = () => {
     }, [product, navigate]);
 
     // Read/write the shared Zustand store — same store as the homepage viewer
-    const { color, scale, setColor, setScale } = useMacbookStore();
+    const { color, scale, setColor, setScale, addToCart } = useMacbookStore();
 
     // Sync the store's scale to this product's default on first load
     useEffect(() => {
@@ -183,9 +183,22 @@ const ProductDetail = () => {
                             </p>
                         </div>
                         <div className="pd-buy-actions">
-                            <Link to="/store" className="btn-primary-pill">
+                            <button
+                                type="button"
+                                className="btn-primary-pill"
+                                onClick={() =>
+                                    addToCart({
+                                        id: product.id,
+                                        name,
+                                        price,
+                                        color:
+                                            colors.find((c) => c.hex === activeSwatchHex)
+                                                ?.label ?? colors[0].label,
+                                    })
+                                }
+                            >
                                 Add to Cart
-                            </Link>
+                            </button>
                             <Link to="/compare" className="btn-ghost-pill">
                                 Compare models
                             </Link>

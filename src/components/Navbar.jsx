@@ -10,6 +10,7 @@
 import { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { navLinks } from "../constants";
+import useMacbookStore from "../store";
 
 const Navbar = () => {
     // Controls whether the mobile menu panel is open
@@ -17,6 +18,8 @@ const Navbar = () => {
 
     const toggleMenu = () => setMenuOpen((prev) => !prev);
     const closeMenu = () => setMenuOpen(false);
+    const { toggleCart, cart } = useMacbookStore();
+    const cartCount = cart.reduce((sum, line) => sum + line.qty, 0);
 
     return (
         <header>
@@ -54,8 +57,16 @@ const Navbar = () => {
                     <button aria-label="Search">
                         <img src="/search.svg" alt="Search" />
                     </button>
-                    <button aria-label="Cart">
+                    <button
+                        type="button"
+                        aria-label="Open bag"
+                        className="nav-cart-btn"
+                        onClick={toggleCart}
+                    >
                         <img src="/cart.svg" alt="Cart" />
+                        {cartCount > 0 && (
+                            <span className="nav-cart-badge">{cartCount}</span>
+                        )}
                     </button>
 
                     {/* Hamburger button — only visible below md breakpoint */}

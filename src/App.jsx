@@ -8,6 +8,7 @@ import { Outlet } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import Navbar from "./components/Navbar";
+import CartDrawer from "./components/CartDrawer";
 
 // Register ScrollTrigger globally — must happen before any component
 // that uses ScrollTrigger is mounted.
@@ -18,6 +19,8 @@ function App() {
         <>
             {/* Persistent global navigation */}
             <Navbar />
+            {/* Cart drawer sits above every page so the bag icon always works */}
+            <CartDrawer />
 
             {/* Page content injected here by React Router based on the active route */}
             <Outlet />
