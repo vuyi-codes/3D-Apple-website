@@ -1,10 +1,13 @@
+// Each nav item has a label (display text) and a path (React Router route).
+// Items without a dedicated page yet use "#" as a placeholder — they'll be
+// wired to real routes in later steps.
 const navLinks = [
-    { label: "Store" },
-    { label: "Mac" },
-    { label: "iPhone" },
-    { label: "Watch" },
-    { label: "Vision" },
-    { label: "AirPods" },
+    { label: "Store",   path: "/store" },
+    { label: "Mac",     path: "/mac" },
+    { label: "iPhone",  path: "#" },
+    { label: "Watch",   path: "#" },
+    { label: "Vision",  path: "#" },
+    { label: "AirPods", path: "#" },
 ];
 
 const noChangeParts = [

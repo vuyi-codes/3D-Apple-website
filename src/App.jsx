@@ -1,29 +1,28 @@
-import Hero from "./components/Hero"
-import Navbar from "./components/Navbar"
-import ProductViewer from "./components/ProductViewer"
-import gsap from 'gsap';
+// App.jsx — root layout component rendered for every route.
+// Navbar sits outside the Outlet so it persists across all pages without
+// re-mounting (consistent with Apple's sticky global nav behaviour).
+//
+// GSAP's ScrollTrigger plugin is registered once here so every child page
+// can create ScrollTriggers without importing/registering it again.
+import { Outlet } from "react-router-dom";
+import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
-import Showcase from "./components/Showcase";
-import Performance from "./components/Performance";
-import Features from "./components/Features";
-import Highlights from "./components/HighLights";
-import Footer from "./components/Footer";
+import Navbar from "./components/Navbar";
 
-gsap.registerPlugin(ScrollTrigger)
+// Register ScrollTrigger globally — must happen before any component
+// that uses ScrollTrigger is mounted.
+gsap.registerPlugin(ScrollTrigger);
 
 function App() {
-  return (
-    <main>
-      <Navbar />
-      <Hero />
-      <ProductViewer />
-      <Showcase />
-      <Performance />
-      <Features />
-      <Highlights />
-      <Footer />
-    </main>
-  )
+    return (
+        <>
+            {/* Persistent global navigation */}
+            <Navbar />
+
+            {/* Page content injected here by React Router based on the active route */}
+            <Outlet />
+        </>
+    );
 }
 
-export default App
+export default App;
