@@ -14,6 +14,7 @@ import Compare from "./pages/Compare.jsx";
 import Store from "./pages/Store.jsx";
 import About from "./pages/About.jsx";
 import Support from "./pages/Support.jsx";
+import NotFound from "./pages/NotFound.jsx";
 
 // Route tree:
 //  /                   → Home (all existing homepage sections)
@@ -23,6 +24,7 @@ import Support from "./pages/Support.jsx";
 //  /store              → Store shell + cart drawer
 //  /about              → Brand / about page
 //  /support            → Support / FAQ page
+//  *                   → 404 NotFound (any unmatched path)
 //
 // All routes share the App layout (Navbar + Outlet).
 const router = createBrowserRouter([
@@ -37,6 +39,7 @@ const router = createBrowserRouter([
             { path: "store", element: <Store /> },
             { path: "about", element: <About /> },
             { path: "support", element: <Support /> },
+            { path: "*", element: <NotFound /> },
         ],
     },
 ]);

@@ -16,9 +16,12 @@ const useMacbookStore = create((set) => ({
     cart: [],          // [{ id, name, price, color, qty }]
     cartOpen: false,   // whether the slide-out drawer is visible
 
-    openCart: () => set({ cartOpen: true }),
+    openCart: () => set({ cartOpen: true, searchOpen: false }),
     closeCart: () => set({ cartOpen: false }),
-    toggleCart: () => set((state) => ({ cartOpen: !state.cartOpen })),
+    toggleCart: () => set((state) => ({
+        cartOpen: !state.cartOpen,
+        searchOpen: state.cartOpen ? state.searchOpen : false,
+    })),
 
     // Adds a line or increments qty when the same product + color already exists
     addToCart: (item) => set((state) => {
@@ -34,12 +37,14 @@ const useMacbookStore = create((set) => ({
                         : line
                 ),
                 cartOpen: true,
+                searchOpen: false,
             };
         }
 
         return {
             cart: [...state.cart, { ...item, qty: 1 }],
             cartOpen: true,
+            searchOpen: false,
         };
     }),
 
@@ -57,6 +62,16 @@ const useMacbookStore = create((set) => ({
     })),
 
     clearCart: () => set({ cart: [] }),
+
+    // ── Site search overlay (client-side filter only — no API) ──
+    searchOpen: false,
+    openSearch: () => set({ searchOpen: true, cartOpen: false }),
+    closeSearch: () => set({ searchOpen: false }),
+    toggleSearch: () => set((state) => ({
+        searchOpen: !state.searchOpen,
+        // Opening search closes the bag so both overlays don't fight
+        cartOpen: state.searchOpen ? state.cartOpen : false,
+    })),
 
     reset: () => set({ color: '#2e2c2e', scale: 0.08, texture: '/videos/feature-1.mp4' }),
 }))

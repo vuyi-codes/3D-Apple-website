@@ -1121,6 +1121,102 @@ body {
   }
   /* ── End Support ──────────────────────────────────────────────────────── */
 
+  /* ── 404 Not Found ────────────────────────────────────────────────────── */
+  #not-found {
+    @apply pt-[7vh] min-h-[70vh] col-center gap-5 px-5 py-32 text-center bg-black;
+
+    .nf-code {
+      @apply text-primary font-semibold text-6xl lg:text-8xl tracking-tight;
+    }
+
+    h1 {
+      @apply text-white font-semibold text-3xl lg:text-5xl max-w-xl;
+    }
+
+    .nf-sub {
+      @apply text-dark-100 text-base lg:text-lg max-w-md;
+    }
+
+    .nf-actions {
+      @apply flex-center flex-wrap gap-3 mt-4;
+    }
+  }
+  /* ── End 404 ──────────────────────────────────────────────────────────── */
+
+  /* ── Search overlay ───────────────────────────────────────────────────── */
+  .search-backdrop {
+    @apply fixed inset-0 bg-black/70 z-[60] opacity-0 pointer-events-none
+           transition-opacity duration-300;
+  }
+
+  .search-backdrop-open {
+    @apply opacity-100 pointer-events-auto;
+  }
+
+  #search-overlay {
+    @apply fixed top-0 left-0 right-0 z-[70] px-5 pt-20 pb-10
+           opacity-0 pointer-events-none -translate-y-4
+           transition-all duration-300 ease-in-out;
+  }
+
+  /* Higher specificity so open state overrides the closed transforms */
+  #search-overlay.search-overlay-open {
+    @apply opacity-100 pointer-events-auto translate-y-0;
+  }
+
+  .search-overlay-inner {
+    @apply container mx-auto max-w-2xl bg-[#1d1d1f] rounded-3xl p-6
+           border border-dark-200 shadow-2xl;
+  }
+
+  .search-overlay-bar {
+    @apply flex items-center gap-3 border-b border-dark-200 pb-4;
+
+    img {
+      @apply size-5 opacity-60 shrink-0;
+    }
+
+    input {
+      @apply flex-1 bg-transparent text-white text-lg outline-none
+             placeholder:text-dark-100 border-none;
+    }
+
+    button {
+      @apply text-dark-100 text-xl cursor-pointer hover:text-white
+             transition-all duration-200;
+    }
+  }
+
+  .search-hint {
+    @apply text-dark-100 text-xs uppercase tracking-widest mt-5 mb-3;
+  }
+
+  .search-empty {
+    @apply text-dark-100 text-sm py-6;
+  }
+
+  .search-results {
+    @apply flex flex-col gap-1 max-h-[50vh] overflow-y-auto;
+  }
+
+  .search-result {
+    @apply flex flex-col gap-0.5 px-4 py-3 rounded-2xl
+           hover:bg-black/40 transition-all duration-200;
+
+    .search-result-type {
+      @apply text-primary text-[10px] uppercase tracking-widest font-medium;
+    }
+
+    .search-result-title {
+      @apply text-white font-semibold text-sm;
+    }
+
+    .search-result-blurb {
+      @apply text-dark-100 text-xs line-clamp-2;
+    }
+  }
+  /* ── End Search ───────────────────────────────────────────────────────── */
+
   footer {
     @apply container mx-auto py-7 max-lg:px-5;
 

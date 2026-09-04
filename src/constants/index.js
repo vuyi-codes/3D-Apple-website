@@ -1,6 +1,6 @@
 // Each nav item has a label (display text) and a path (React Router route).
-// Items without a dedicated page yet use "#" as a placeholder — they'll be
-// wired to real routes in later steps.
+// Product lines without pages yet (iPhone / Watch / Vision / AirPods) stay
+// as "#" until their landings land. Support is live; About lives in the footer.
 const navLinks = [
     { label: "Store",   path: "/store" },
     { label: "Mac",     path: "/mac" },
@@ -8,6 +8,7 @@ const navLinks = [
     { label: "Watch",   path: "#" },
     { label: "Vision",  path: "#" },
     { label: "AirPods", path: "#" },
+    { label: "Support", path: "/support" },
 ];
 
 const noChangeParts = [
@@ -393,13 +394,58 @@ const supportFaqs = [
 
 // ─────────────────────────────────────────────────────────────────────────────
 
+// Footer site links — only real routes (no dead "#" legal stubs).
+// Privacy / Terms can return when we add dedicated legal pages.
 const footerLinks = [
-    { label: "Privacy Policy", link: "#" },
-    { label: "Terms of Use", link: "#" },
-    { label: "Sales Policy", link: "#" },
-    { label: "Legal", link: "#" },
-    { label: "Site Map", link: "#" },
+    { label: "About",   link: "/about" },
+    { label: "Support", link: "/support" },
+    { label: "Store",   link: "/store" },
+    { label: "Mac",     link: "/mac" },
+    { label: "Compare", link: "/compare" },
 ];
+
+// Flat index for the navbar search overlay — built from existing mock data
+// plus a few page shortcuts. Filtered in the browser only.
+const buildSearchIndex = () => {
+    const pages = [
+        { id: "page-home", type: "Page", title: "Home", blurb: "MacBook Pro showcase", href: "/" },
+        { id: "page-mac", type: "Page", title: "Mac", blurb: "Mac lineup and Why Mac", href: "/mac" },
+        { id: "page-compare", type: "Page", title: "Compare Macs", blurb: "Side-by-side specs", href: "/compare" },
+        { id: "page-store", type: "Page", title: "Store", blurb: "Shop Mac and accessories", href: "/store" },
+        { id: "page-about", type: "Page", title: "About", blurb: "Values and timeline", href: "/about" },
+        { id: "page-support", type: "Page", title: "Support", blurb: "Help and FAQs", href: "/support" },
+    ];
+
+    const macs = macLineup.map((m) => ({
+        id: `mac-${m.id}`,
+        type: "Mac",
+        title: m.name,
+        blurb: m.highlight,
+        href: `/mac/${m.slug}`,
+    }));
+
+    const accessories = storeAccessories.map((a) => ({
+        id: `acc-${a.id}`,
+        type: "Accessory",
+        title: a.name,
+        blurb: a.description,
+        href: "/store",
+    }));
+
+    const faqs = supportFaqs.map((f) => ({
+        id: `faq-${f.id}`,
+        type: "FAQ",
+        title: f.question,
+        blurb: f.answer,
+        href: "/support",
+    }));
+
+    return [...pages, ...macs, ...accessories, ...faqs];
+};
+
+const searchIndex = buildSearchIndex();
+
+// ─────────────────────────────────────────────────────────────────────────────
 
 export {
     aboutTimeline,
@@ -412,6 +458,7 @@ export {
     noChangeParts,
     performanceImages,
     performanceImgPositions,
+    searchIndex,
     storeAccessories,
     storeCategories,
     supportFaqs,

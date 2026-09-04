@@ -18,7 +18,7 @@ const Navbar = () => {
 
     const toggleMenu = () => setMenuOpen((prev) => !prev);
     const closeMenu = () => setMenuOpen(false);
-    const { toggleCart, cart } = useMacbookStore();
+    const { toggleCart, toggleSearch, cart } = useMacbookStore();
     const cartCount = cart.reduce((sum, line) => sum + line.qty, 0);
 
     return (
@@ -54,7 +54,7 @@ const Navbar = () => {
 
                 {/* Right-side controls: search, cart, and mobile hamburger */}
                 <div className="flex-center gap-3">
-                    <button aria-label="Search">
+                    <button type="button" aria-label="Search" onClick={toggleSearch}>
                         <img src="/search.svg" alt="Search" />
                     </button>
                     <button
