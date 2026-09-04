@@ -968,6 +968,85 @@ body {
   }
   /* ── End Store + Cart ─────────────────────────────────────────────────── */
 
+  /* ── Accessory Detail (/store/:slug) ──────────────────────────────────── */
+  #acc-page {
+    @apply pt-[7vh] bg-black text-white;
+  }
+
+  #acc-hero {
+    @apply col-center gap-4 py-24 px-5 text-center;
+
+    .acc-eyebrow {
+      @apply text-dark-100 text-xs uppercase tracking-widest;
+    }
+
+    h1 {
+      @apply font-semibold text-4xl lg:text-6xl text-white;
+    }
+
+    .acc-highlight {
+      @apply text-white font-semibold text-xl max-w-xl;
+    }
+
+    .acc-desc {
+      @apply text-dark-100 text-sm max-w-lg;
+    }
+
+    .acc-visual {
+      @apply w-full max-w-md h-56 rounded-3xl my-6;
+      background: linear-gradient(135deg, #2e2e30 0%, #1a1a1c 100%);
+    }
+
+    .acc-color-row {
+      @apply flex gap-3;
+
+      .acc-swatch {
+        @apply size-6 cursor-pointer;
+      }
+
+      .store-swatch-on {
+        @apply ring-2 ring-white;
+      }
+    }
+
+    .acc-color-label {
+      @apply text-dark-100 text-xs;
+    }
+
+    .acc-price {
+      @apply text-white font-semibold text-3xl mt-2;
+    }
+
+    .acc-actions {
+      @apply flex-center flex-wrap gap-3 mt-4;
+    }
+  }
+
+  #acc-specs {
+    @apply py-20 px-5 bg-[#0a0a0a];
+
+    .acc-section-title {
+      @apply text-white font-semibold text-3xl text-center mb-12;
+    }
+
+    .acc-specs-table {
+      @apply container mx-auto max-w-2xl border-collapse 2xl:px-0;
+
+      .acc-spec-row {
+        @apply border-b border-dark-200 opacity-0;
+
+        th {
+          @apply text-dark-100 font-medium text-sm py-4 pr-8 text-left w-40 align-top;
+        }
+
+        td {
+          @apply text-white font-regular text-sm py-4 leading-relaxed;
+        }
+      }
+    }
+  }
+  /* ── End Accessory Detail ─────────────────────────────────────────────── */
+
   /* ── About page (/about) ─────────────────────────────────────────────── */
   #about-page {
     @apply pt-[7vh] bg-black text-white;

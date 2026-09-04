@@ -25,7 +25,7 @@ const catalog = [
     })),
     ...storeAccessories.map((a) => ({
         ...a,
-        href: null, // accessories have no detail page yet
+        href: `/store/${a.slug}`,
     })),
 ];
 

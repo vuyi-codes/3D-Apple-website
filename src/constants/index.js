@@ -518,7 +518,14 @@ const storeAccessories = [
         category: "Accessories",
         price: 149,
         description: "A wireless keyboard with a numeric keypad and Touch ID.",
+        highlight: "Typing and Touch ID, wireless.",
         colors: [{ hex: "#e3d5c0", label: "Silver" }, { hex: "#2e2c2e", label: "Black" }],
+        specs: [
+            { label: "Connectivity", value: "Bluetooth / USB-C" },
+            { label: "Power", value: "Rechargeable lithium-ion" },
+            { label: "Features", value: "Touch ID, numeric keypad, scissor mechanism" },
+            { label: "Compatibility", value: "Mac with Apple silicon or T2 Security Chip" },
+        ],
     },
     {
         id: "magic-mouse",
@@ -527,7 +534,14 @@ const storeAccessories = [
         category: "Accessories",
         price: 99,
         description: "Multi-Touch surface. Pairs instantly with your Mac.",
+        highlight: "Multi-Touch. Multi-purpose.",
         colors: [{ hex: "#e3d5c0", label: "Silver" }, { hex: "#2e2c2e", label: "Black" }],
+        specs: [
+            { label: "Connectivity", value: "Bluetooth / Lightning or USB-C (model dependent)" },
+            { label: "Power", value: "Rechargeable lithium-ion" },
+            { label: "Features", value: "Multi-Touch surface, seamless scrolling" },
+            { label: "Compatibility", value: "Mac computers" },
+        ],
     },
     {
         id: "usb-c-hub",
@@ -536,7 +550,14 @@ const storeAccessories = [
         category: "Accessories",
         price: 69,
         description: "HDMI, USB-A, and USB-C charging in one compact adapter.",
+        highlight: "One port. More possibilities.",
         colors: [{ hex: "#6e6e73", label: "White" }],
+        specs: [
+            { label: "Ports", value: "HDMI, USB-A, USB-C (pass-through charging)" },
+            { label: "Video", value: "Up to 4K via HDMI (device dependent)" },
+            { label: "Compatibility", value: "Mac, iPad, and other USB-C devices" },
+            { label: "Design", value: "Compact multiport adapter" },
+        ],
     },
 ];
 
@@ -694,7 +715,7 @@ const buildSearchIndex = () => {
         type: "Accessory",
         title: a.name,
         blurb: a.description,
-        href: "/store",
+        href: `/store/${a.slug}`,
     }));
 
     const faqs = supportFaqs.map((f) => ({

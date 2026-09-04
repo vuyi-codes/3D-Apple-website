@@ -12,6 +12,7 @@ import MacLanding from "./pages/MacLanding.jsx";
 import ProductDetail from "./pages/ProductDetail.jsx";
 import Compare from "./pages/Compare.jsx";
 import Store from "./pages/Store.jsx";
+import AccessoryDetail from "./pages/AccessoryDetail.jsx";
 import About from "./pages/About.jsx";
 import Support from "./pages/Support.jsx";
 import NotFound from "./pages/NotFound.jsx";
@@ -35,6 +36,7 @@ const router = createBrowserRouter([
             { path: "airpods", element: <AirPodsLanding /> },
             { path: "compare", element: <Compare /> },
             { path: "store", element: <Store /> },
+            { path: "store/:slug", element: <AccessoryDetail /> },
             { path: "about", element: <About /> },
             { path: "support", element: <Support /> },
             { path: "*", element: <NotFound /> },
