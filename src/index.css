@@ -415,13 +415,15 @@ body {
     @apply inline-block text-primary py-2 px-4 rounded-full font-semibold text-sm cursor-pointer hover:text-white transition-all duration-300 ease-in-out;
   }
 
-  /* ── Mac Landing page ─────────────────────────────────────────────────── */
-  #mac-landing {
+  /* ── Mac Landing page (+ shared with iPhone landing) ──────────────────── */
+  #mac-landing,
+  #iphone-landing {
     @apply pt-[7vh]; /* offset for fixed navbar */
   }
 
   /* Hero */
-  #mac-hero {
+  #mac-hero,
+  #iphone-hero {
     @apply col-center gap-6 py-32 px-5 text-center bg-black;
 
     .mac-eyebrow {
@@ -442,7 +444,8 @@ body {
   }
 
   /* Lineup grid */
-  #mac-lineup {
+  #mac-lineup,
+  #iphone-lineup {
     @apply py-20 px-5 bg-black;
 
     .mac-section-title {
@@ -514,8 +517,9 @@ body {
     }
   }
 
-  /* Why Mac */
-  #why-mac {
+  /* Why Mac / Why iPhone */
+  #why-mac,
+  #why-iphone {
     @apply py-24 px-5 bg-[#0a0a0a];
 
     .mac-section-title {
@@ -544,8 +548,9 @@ body {
     }
   }
 
-  /* Compare CTA */
-  #mac-compare-cta {
+  /* Compare / Store CTA */
+  #mac-compare-cta,
+  #iphone-store-cta {
     @apply col-center gap-6 py-28 px-5 bg-black text-center;
 
     .mac-eyebrow {
@@ -556,7 +561,7 @@ body {
       @apply text-white font-semibold text-3xl lg:text-5xl max-w-2xl;
     }
   }
-  /* ── End Mac Landing ──────────────────────────────────────────────────── */
+  /* ── End Mac / iPhone Landing ─────────────────────────────────────────── */
 
   /* ── Product Detail page (/mac/:model) ───────────────────────────────── */
   #pd-page {

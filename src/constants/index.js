@@ -1,10 +1,10 @@
 // Each nav item has a label (display text) and a path (React Router route).
-// Product lines without pages yet (iPhone / Watch / Vision / AirPods) stay
-// as "#" until their landings land. Support is live; About lives in the footer.
+// Product lines without pages yet (Watch / Vision / AirPods) stay as "#".
+// iPhone and Support are live; About lives in the footer.
 const navLinks = [
     { label: "Store",   path: "/store" },
     { label: "Mac",     path: "/mac" },
-    { label: "iPhone",  path: "#" },
+    { label: "iPhone",  path: "/iphone" },
     { label: "Watch",   path: "#" },
     { label: "Vision",  path: "#" },
     { label: "AirPods", path: "#" },
@@ -279,6 +279,102 @@ const whyMac = [
     },
 ];
 
+// ─── iPhone Landing page data (no 3D — mock cards only) ─────────────────────
+const iphoneLineup = [
+    {
+        id: "iphone-16-pro",
+        slug: "iphone-16-pro",
+        name: "iPhone 16 Pro",
+        chip: "A18 Pro chip",
+        highlight: "Titanium. So strong. So light. So Pro.",
+        description:
+            "A18 Pro, Camera Control, and a pro camera system for the next level of photography and film.",
+        price: 999,
+        monthly: 41,
+        badge: "Most Popular",
+        colors: [
+            { hex: "#c2bcb2", label: "Natural Titanium" },
+            { hex: "#3c3c3d", label: "Black Titanium" },
+            { hex: "#f2e8da", label: "Desert Titanium" },
+            { hex: "#5e6670", label: "White Titanium" },
+        ],
+    },
+    {
+        id: "iphone-16",
+        slug: "iphone-16",
+        name: "iPhone 16",
+        chip: "A18 chip",
+        highlight: "Hello, Apple Intelligence.",
+        description:
+            "A18 chip, a customisable Action button, and a 48MP Fusion camera — built for everyday brilliance.",
+        price: 799,
+        monthly: 33,
+        badge: null,
+        colors: [
+            { hex: "#a8b5c4", label: "Ultramarine" },
+            { hex: "#e3c4c9", label: "Pink" },
+            { hex: "#d4e0c8", label: "Teal" },
+            { hex: "#f5f5f0", label: "White" },
+            { hex: "#1c1c1e", label: "Black" },
+        ],
+    },
+    {
+        id: "iphone-16e",
+        slug: "iphone-16e",
+        name: "iPhone 16e",
+        chip: "A18 chip",
+        highlight: "Latest iPhone. Greatest price.",
+        description:
+            "A18 chip, Centre Stage front camera, and all-day battery in a design that keeps things simple.",
+        price: 599,
+        monthly: 24,
+        badge: null,
+        colors: [
+            { hex: "#f5f5f0", label: "White" },
+            { hex: "#1c1c1e", label: "Black" },
+        ],
+    },
+];
+
+const whyIphone = [
+    {
+        id: "wi1",
+        icon: "/feature-icon1.svg",
+        title: "Apple Intelligence",
+        body: "Writing tools, Image Playground, and private on-device smarts — built into iOS.",
+    },
+    {
+        id: "wi2",
+        icon: "/feature-icon2.svg",
+        title: "Camera Control",
+        body: "A new way to capture photos and video with a light press, click, or swipe.",
+    },
+    {
+        id: "wi3",
+        icon: "/feature-icon3.svg",
+        title: "All-day battery",
+        body: "Power through the day and into the night — then charge with MagSafe or USB-C.",
+    },
+    {
+        id: "wi4",
+        icon: "/feature-icon4.svg",
+        title: "Crash Detection",
+        body: "If a severe car crash is detected, iPhone can call emergency services for you.",
+    },
+    {
+        id: "wi5",
+        icon: "/feature-icon5.svg",
+        title: "Privacy",
+        body: "Face ID, Lock Screen, and on-device processing keep what matters yours.",
+    },
+    {
+        id: "wi6",
+        icon: "/feature-icon1.svg",
+        title: "iOS",
+        body: "The world's most personal mobile OS — familiar, powerful, and free to update.",
+    },
+];
+
 // Store catalog — Macs are derived from macLineup plus a few mock accessories.
 // `category` drives the Store filter chips. No API / no real inventory.
 const storeAccessories = [
@@ -410,6 +506,7 @@ const buildSearchIndex = () => {
     const pages = [
         { id: "page-home", type: "Page", title: "Home", blurb: "MacBook Pro showcase", href: "/" },
         { id: "page-mac", type: "Page", title: "Mac", blurb: "Mac lineup and Why Mac", href: "/mac" },
+        { id: "page-iphone", type: "Page", title: "iPhone", blurb: "iPhone lineup and features", href: "/iphone" },
         { id: "page-compare", type: "Page", title: "Compare Macs", blurb: "Side-by-side specs", href: "/compare" },
         { id: "page-store", type: "Page", title: "Store", blurb: "Shop Mac and accessories", href: "/store" },
         { id: "page-about", type: "Page", title: "About", blurb: "Values and timeline", href: "/about" },
@@ -422,6 +519,14 @@ const buildSearchIndex = () => {
         title: m.name,
         blurb: m.highlight,
         href: `/mac/${m.slug}`,
+    }));
+
+    const iphones = iphoneLineup.map((p) => ({
+        id: `iphone-${p.id}`,
+        type: "iPhone",
+        title: p.name,
+        blurb: p.highlight,
+        href: "/store",
     }));
 
     const accessories = storeAccessories.map((a) => ({
@@ -440,7 +545,7 @@ const buildSearchIndex = () => {
         href: "/support",
     }));
 
-    return [...pages, ...macs, ...accessories, ...faqs];
+    return [...pages, ...macs, ...iphones, ...accessories, ...faqs];
 };
 
 const searchIndex = buildSearchIndex();
@@ -453,6 +558,7 @@ export {
     features,
     featureSequence,
     footerLinks,
+    iphoneLineup,
     macLineup,
     navLinks,
     noChangeParts,
@@ -463,5 +569,6 @@ export {
     storeCategories,
     supportFaqs,
     supportTopics,
+    whyIphone,
     whyMac,
 };

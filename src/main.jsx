@@ -15,11 +15,13 @@ import Store from "./pages/Store.jsx";
 import About from "./pages/About.jsx";
 import Support from "./pages/Support.jsx";
 import NotFound from "./pages/NotFound.jsx";
+import IphoneLanding from "./pages/IphoneLanding.jsx";
 
 // Route tree:
 //  /                   → Home (all existing homepage sections)
 //  /mac                → Mac lineup landing
 //  /mac/:model         → Individual product detail (e.g. /mac/macbook-pro-14)
+//  /iphone             → iPhone lineup landing (mock cards, no 3D)
 //  /compare            → Side-by-side spec comparison
 //  /store              → Store shell + cart drawer
 //  /about              → Brand / about page
@@ -35,6 +37,7 @@ const router = createBrowserRouter([
             { index: true, element: <Home /> },
             { path: "mac", element: <MacLanding /> },
             { path: "mac/:model", element: <ProductDetail /> },
+            { path: "iphone", element: <IphoneLanding /> },
             { path: "compare", element: <Compare /> },
             { path: "store", element: <Store /> },
             { path: "about", element: <About /> },
