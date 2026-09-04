@@ -1,12 +1,13 @@
-// ProductLineLanding — shared shell for Watch / Vision / AirPods (and similar
-// category pages). Same section order + GSAP patterns as MacLanding / IphoneLanding.
-// No 3D — cards use .mac-card placeholders; CTAs go to /store.
+// ProductLineLanding — shared shell for Watch / Vision / AirPods / iPad.
+// Same section order + GSAP patterns as MacLanding / IphoneLanding.
+// Cards use ProductCard (Store-matching layout).
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { useGSAP } from "@gsap/react";
 import { useMediaQuery } from "react-responsive";
 import gsap from "gsap";
 import Footer from "./Footer";
+import ProductCard from "./ProductCard";
 
 /**
  * @param {object} props
@@ -104,44 +105,11 @@ const ProductLineLanding = ({
                     <h2 className="mac-section-title">{lineupTitle}</h2>
                     <div className="mac-lineup-grid">
                         {lineup.map((model) => (
-                            <article key={model.id} className="mac-card">
-                                {model.badge && (
-                                    <span className="mac-card-badge">{model.badge}</span>
-                                )}
-                                <div className="mac-card-swatches">
-                                    {model.colors.map(({ hex, label }) => (
-                                        <span
-                                            key={hex}
-                                            className="mac-swatch"
-                                            style={{ backgroundColor: hex }}
-                                            aria-label={label}
-                                        />
-                                    ))}
-                                </div>
-                                <div className="mac-card-img-placeholder" aria-hidden="true" />
-                                <div className="mac-card-body">
-                                    <p className="mac-card-chip">{model.chip}</p>
-                                    <h2 className="mac-card-name">{model.name}</h2>
-                                    <p className="mac-card-highlight">{model.highlight}</p>
-                                    <p className="mac-card-desc">{model.description}</p>
-                                    <div className="mac-card-pricing">
-                                        <span className="mac-card-price">
-                                            From ${model.price.toLocaleString()}
-                                        </span>
-                                        <span className="mac-card-monthly">
-                                            or ${model.monthly}/mo.
-                                        </span>
-                                    </div>
-                                    <div className="mac-card-actions">
-                                        <Link to="/store" className="btn-primary-pill">
-                                            Learn more
-                                        </Link>
-                                        <Link to="/store" className="btn-ghost-pill">
-                                            Buy →
-                                        </Link>
-                                    </div>
-                                </div>
-                            </article>
+                            <ProductCard
+                                key={model.id}
+                                model={model}
+                                primaryHref="/store"
+                            />
                         ))}
                     </div>
                 </section>

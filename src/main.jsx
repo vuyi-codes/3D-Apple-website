@@ -17,12 +17,14 @@ import About from "./pages/About.jsx";
 import Support from "./pages/Support.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import IphoneLanding from "./pages/IphoneLanding.jsx";
+import IpadLanding from "./pages/IpadLanding.jsx";
 import WatchLanding from "./pages/WatchLanding.jsx";
 import VisionLanding from "./pages/VisionLanding.jsx";
 import AirPodsLanding from "./pages/AirPodsLanding.jsx";
 import Checkout from "./pages/Checkout.jsx";
+import SignInRedirect from "./pages/SignInRedirect.jsx";
 
-// All routes share the App layout (Navbar + Outlet + Cart / Search).
+// All routes share the App layout (Navbar + Outlet + Cart / Search / Auth).
 const router = createBrowserRouter([
     {
         path: "/",
@@ -31,6 +33,7 @@ const router = createBrowserRouter([
             { index: true, element: <Home /> },
             { path: "mac", element: <MacLanding /> },
             { path: "mac/:model", element: <ProductDetail /> },
+            { path: "ipad", element: <IpadLanding /> },
             { path: "iphone", element: <IphoneLanding /> },
             { path: "watch", element: <WatchLanding /> },
             { path: "vision", element: <VisionLanding /> },
@@ -41,6 +44,8 @@ const router = createBrowserRouter([
             { path: "checkout", element: <Checkout /> },
             { path: "about", element: <About /> },
             { path: "support", element: <Support /> },
+            // Legacy URL — opens AuthModal then redirects home
+            { path: "signin", element: <SignInRedirect /> },
             { path: "*", element: <NotFound /> },
         ],
     },

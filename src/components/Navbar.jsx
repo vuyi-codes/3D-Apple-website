@@ -18,7 +18,7 @@ const Navbar = () => {
 
     const toggleMenu = () => setMenuOpen((prev) => !prev);
     const closeMenu = () => setMenuOpen(false);
-    const { toggleCart, toggleSearch, cart } = useMacbookStore();
+    const { toggleCart, toggleSearch, openAuth, cart } = useMacbookStore();
     const cartCount = cart.reduce((sum, line) => sum + line.qty, 0);
 
     return (
@@ -67,6 +67,18 @@ const Navbar = () => {
                         {cartCount > 0 && (
                             <span className="nav-cart-badge">{cartCount}</span>
                         )}
+                    </button>
+
+                    {/* Opens AuthModal (Sign In) — not a route */}
+                    <button
+                        type="button"
+                        className="nav-signup-btn"
+                        onClick={() => {
+                            closeMenu();
+                            openAuth("signin");
+                        }}
+                    >
+                        Sign In
                     </button>
 
                     {/* Hamburger button — only visible below md breakpoint */}

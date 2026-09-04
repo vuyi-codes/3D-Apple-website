@@ -16,6 +16,7 @@ import { useMediaQuery } from "react-responsive";
 import gsap from "gsap";
 import { macLineup, whyMac } from "../constants";
 import Footer from "../components/Footer";
+import ProductCard from "../components/ProductCard";
 
 // ─── Mac Hero ────────────────────────────────────────────────────────────────
 const MacHero = () => {
@@ -58,57 +59,6 @@ const MacHero = () => {
     );
 };
 
-// ─── Model Card ──────────────────────────────────────────────────────────────
-// Individual card in the lineup grid.
-const ModelCard = ({ model }) => {
-    const { slug, name, chip, highlight, description, price, monthly, colors, badge } = model;
-
-    return (
-        <article className="mac-card">
-            {/* Optional "Most Popular" badge */}
-            {badge && <span className="mac-card-badge">{badge}</span>}
-
-            {/* Colour swatches — decorative only on the landing page;
-                the real colour picker lives on the Product Detail page */}
-            <div className="mac-card-swatches">
-                {colors.map(({ hex, label }) => (
-                    <span
-                        key={hex}
-                        className="mac-swatch"
-                        style={{ backgroundColor: hex }}
-                        aria-label={label}
-                    />
-                ))}
-            </div>
-
-            {/* Placeholder image area — shows a gradient tile until real
-                product renders are dropped into /public */}
-            <div className="mac-card-img-placeholder" aria-hidden="true" />
-
-            <div className="mac-card-body">
-                <p className="mac-card-chip">{chip}</p>
-                <h2 className="mac-card-name">{name}</h2>
-                <p className="mac-card-highlight">{highlight}</p>
-                <p className="mac-card-desc">{description}</p>
-
-                <div className="mac-card-pricing">
-                    <span className="mac-card-price">From ${price.toLocaleString()}</span>
-                    <span className="mac-card-monthly">or ${monthly}/mo.</span>
-                </div>
-
-                <div className="mac-card-actions">
-                    <Link to={`/mac/${slug}`} className="btn-primary-pill">
-                        Learn more
-                    </Link>
-                    <Link to="/store" className="btn-ghost-pill">
-                        Buy →
-                    </Link>
-                </div>
-            </div>
-        </article>
-    );
-};
-
 // ─── Lineup Grid ─────────────────────────────────────────────────────────────
 const LineupGrid = () => {
     const isMobile = useMediaQuery({ query: "(max-width: 1024px)" });
@@ -133,7 +83,15 @@ const LineupGrid = () => {
             <h2 className="mac-section-title">Choose your Mac.</h2>
             <div className="mac-lineup-grid">
                 {macLineup.map((model) => (
-                    <ModelCard key={model.id} model={model} />
+                    <ProductCard
+                        key={model.id}
+                        model={model}
+                        primaryHref={
+                            model.storeScale != null
+                                ? `/mac/${model.slug}`
+                                : `/store/${model.slug}`
+                        }
+                    />
                 ))}
             </div>
         </section>

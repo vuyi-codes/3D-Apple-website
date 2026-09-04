@@ -12,6 +12,7 @@ import { useMediaQuery } from "react-responsive";
 import gsap from "gsap";
 import { iphoneLineup, whyIphone } from "../constants";
 import Footer from "../components/Footer";
+import ProductCard from "../components/ProductCard";
 
 const IphoneHero = () => {
     const heroRef = useRef(null);
@@ -52,51 +53,6 @@ const IphoneHero = () => {
     );
 };
 
-const IphoneCard = ({ model }) => {
-    const { name, chip, highlight, description, price, monthly, colors, badge } = model;
-
-    return (
-        <article className="mac-card">
-            {badge && <span className="mac-card-badge">{badge}</span>}
-
-            <div className="mac-card-swatches">
-                {colors.map(({ hex, label }) => (
-                    <span
-                        key={hex}
-                        className="mac-swatch"
-                        style={{ backgroundColor: hex }}
-                        aria-label={label}
-                    />
-                ))}
-            </div>
-
-            {/* Gradient placeholder — same approach as Mac landing cards */}
-            <div className="mac-card-img-placeholder" aria-hidden="true" />
-
-            <div className="mac-card-body">
-                <p className="mac-card-chip">{chip}</p>
-                <h2 className="mac-card-name">{name}</h2>
-                <p className="mac-card-highlight">{highlight}</p>
-                <p className="mac-card-desc">{description}</p>
-
-                <div className="mac-card-pricing">
-                    <span className="mac-card-price">From ${price.toLocaleString()}</span>
-                    <span className="mac-card-monthly">or ${monthly}/mo.</span>
-                </div>
-
-                <div className="mac-card-actions">
-                    <Link to="/store" className="btn-primary-pill">
-                        Learn more
-                    </Link>
-                    <Link to="/store" className="btn-ghost-pill">
-                        Buy →
-                    </Link>
-                </div>
-            </div>
-        </article>
-    );
-};
-
 const IphoneLineup = () => {
     const isMobile = useMediaQuery({ query: "(max-width: 1024px)" });
 
@@ -119,7 +75,11 @@ const IphoneLineup = () => {
             <h2 className="mac-section-title">Choose your iPhone.</h2>
             <div className="mac-lineup-grid">
                 {iphoneLineup.map((model) => (
-                    <IphoneCard key={model.id} model={model} />
+                    <ProductCard
+                        key={model.id}
+                        model={model}
+                        primaryHref="/store"
+                    />
                 ))}
             </div>
         </section>

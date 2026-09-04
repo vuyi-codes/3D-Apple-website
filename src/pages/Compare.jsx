@@ -12,20 +12,23 @@ import gsap from "gsap";
 import { macLineup } from "../constants";
 import Footer from "../components/Footer";
 
+// Compare only MacBooks that share the full 3D-viewer spec sheet
+const compareModels = macLineup.filter((m) => m.storeScale != null);
+
 const Compare = () => {
     const isMobile = useMediaQuery({ query: "(max-width: 1024px)" });
 
     // All models visible by default. Toggling a chip removes that column.
-    const [visibleIds, setVisibleIds] = useState(macLineup.map((m) => m.id));
+    const [visibleIds, setVisibleIds] = useState(compareModels.map((m) => m.id));
 
     const visibleModels = useMemo(
-        () => macLineup.filter((m) => visibleIds.includes(m.id)),
+        () => compareModels.filter((m) => visibleIds.includes(m.id)),
         [visibleIds]
     );
 
     // Spec row labels come from the first lineup entry so the table stays
     // in sync if constants change — all models share the same spec keys.
-    const specLabels = macLineup[0].specs.map((s) => s.label);
+    const specLabels = compareModels[0].specs.map((s) => s.label);
 
     const toggleModel = (id) => {
         setVisibleIds((prev) => {
@@ -75,7 +78,7 @@ const Compare = () => {
 
                     {/* Filter chips — toggle which columns appear in the table */}
                     <div className="cmp-toggles cmp-hero-animate">
-                        {macLineup.map((model) => {
+                        {compareModels.map((model) => {
                             const isOn = visibleIds.includes(model.id);
                             return (
                                 <button

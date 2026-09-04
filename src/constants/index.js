@@ -3,6 +3,7 @@
 const navLinks = [
     { label: "Store",   path: "/store" },
     { label: "Mac",     path: "/mac" },
+    { label: "iPad",    path: "/ipad" },
     { label: "iPhone",  path: "/iphone" },
     { label: "Watch",   path: "/watch" },
     { label: "Vision",  path: "/vision" },
@@ -146,6 +147,7 @@ const macLineup = [
         price: 1099,
         monthly: 92,
         badge: null,
+        image: "/laptops/macbook-air.png",
         storeScale: 0.06, // renders the 14" model as a stand-in
         // colorMap: { swatchHex: zustandColorValue }
         colorMap: {
@@ -183,6 +185,7 @@ const macLineup = [
         price: 1999,
         monthly: 167,
         badge: "Most Popular",
+        image: "/laptops/macbook-pro-14.png",
         storeScale: 0.06,
         colorMap: {
             "#2e2c2e": "#2e2c2e",
@@ -215,6 +218,7 @@ const macLineup = [
         price: 2499,
         monthly: 208,
         badge: null,
+        image: "/laptops/macbook-pro-16.png",
         storeScale: 0.08,
         colorMap: {
             "#2e2c2e": "#2e2c2e",
@@ -234,6 +238,54 @@ const macLineup = [
             { label: "Battery",     value: "Up to 22 hours" },
             { label: "Weight",      value: "4.7 lbs (2.14 kg)" },
             { label: "Ports",       value: "3× Thunderbolt 5, HDMI, SD card, MagSafe 3" },
+        ],
+    },
+    {
+        id: "mac-mini",
+        slug: "mac-mini",
+        name: "Mac mini",
+        chip: "Apple M4 chip",
+        highlight: "More muscle. Same mini.",
+        description:
+            "Desktop power in a tiny footprint — M4 performance for everyday work, creative apps, and more.",
+        price: 599,
+        monthly: 50,
+        badge: null,
+        image: "/laptops/mac-mini.png",
+        // No 3D viewer — Learn more goes to Store
+        colors: [
+            { hex: "#e3d5c0", label: "Silver" },
+        ],
+        specs: [
+            { label: "Chip", value: "Apple M4" },
+            { label: "Memory", value: "16 GB unified memory" },
+            { label: "Storage", value: "256 GB SSD" },
+            { label: "Ports", value: "Thunderbolt 4, HDMI, USB-A, Ethernet" },
+        ],
+    },
+    {
+        id: "imac",
+        slug: "imac",
+        name: "iMac",
+        chip: "Apple M4 chip",
+        highlight: "Packed with more juice.",
+        description:
+            "All-in-one desktop with a vivid 24\" display, M4 performance, and colours that light up any desk.",
+        price: 1299,
+        monthly: 108,
+        badge: null,
+        image: "/laptops/desktop-mac.png",
+        colors: [
+            { hex: "#7d9bb8", label: "Blue" },
+            { hex: "#e8a0b0", label: "Pink" },
+            { hex: "#f5e6c8", label: "Yellow" },
+            { hex: "#6e6e73", label: "Silver" },
+        ],
+        specs: [
+            { label: "Chip", value: "Apple M4" },
+            { label: "Display", value: "24\" 4.5K Retina" },
+            { label: "Memory", value: "16 GB unified memory" },
+            { label: "Storage", value: "256 GB SSD" },
         ],
     },
 ];
@@ -281,6 +333,24 @@ const whyMac = [
 // ─── iPhone Landing page data (no 3D — mock cards only) ─────────────────────
 const iphoneLineup = [
     {
+        id: "iphone-17-pro",
+        slug: "iphone-17-pro",
+        name: "iPhone 17 Pro",
+        chip: "A19 Pro chip",
+        highlight: "Pro beyond pro.",
+        description:
+            "The most advanced iPhone camera system yet, with Apple Intelligence and a design built for lasting power.",
+        price: 1099,
+        monthly: 45,
+        badge: "New",
+        image: "/laptops/iphone-17pro.png",
+        colors: [
+            { hex: "#c2bcb2", label: "Natural Titanium" },
+            { hex: "#3c3c3d", label: "Black Titanium" },
+            { hex: "#5e6670", label: "White Titanium" },
+        ],
+    },
+    {
         id: "iphone-16-pro",
         slug: "iphone-16-pro",
         name: "iPhone 16 Pro",
@@ -291,6 +361,7 @@ const iphoneLineup = [
         price: 999,
         monthly: 41,
         badge: "Most Popular",
+        image: "/laptops/apple-iphone-16-pro.png",
         colors: [
             { hex: "#c2bcb2", label: "Natural Titanium" },
             { hex: "#3c3c3d", label: "Black Titanium" },
@@ -309,6 +380,7 @@ const iphoneLineup = [
         price: 799,
         monthly: 33,
         badge: null,
+        image: "/laptops/apple-iphone-16.png",
         colors: [
             { hex: "#a8b5c4", label: "Ultramarine" },
             { hex: "#e3c4c9", label: "Pink" },
@@ -328,6 +400,7 @@ const iphoneLineup = [
         price: 599,
         monthly: 24,
         badge: null,
+        image: "/laptops/apple-iphone-16e.png",
         colors: [
             { hex: "#f5f5f0", label: "White" },
             { hex: "#1c1c1e", label: "Black" },
@@ -386,6 +459,7 @@ const watchLineup = [
         price: 799,
         monthly: 33,
         badge: null,
+        image: "/laptops/apple-watch-ultra2.png",
         colors: [{ hex: "#c2bcb2", label: "Natural" }, { hex: "#1c1c1e", label: "Black" }],
     },
     {
@@ -398,6 +472,7 @@ const watchLineup = [
         price: 399,
         monthly: 16,
         badge: "Most Popular",
+        image: "/laptops/apple-watch-series10.png",
         colors: [
             { hex: "#d4a574", label: "Rose Gold" },
             { hex: "#c0c0c0", label: "Silver" },
@@ -414,6 +489,7 @@ const watchLineup = [
         price: 249,
         monthly: 10,
         badge: null,
+        image: "/laptops/apple-watch-SE.png",
         colors: [
             { hex: "#c0c0c0", label: "Silver" },
             { hex: "#2e2c2e", label: "Midnight" },
@@ -442,6 +518,7 @@ const visionLineup = [
         price: 3499,
         monthly: 291,
         badge: null,
+        image: "/laptops/apple-vision.png",
         colors: [{ hex: "#e8e8e8", label: "Silver" }],
     },
 ];
@@ -466,6 +543,7 @@ const airpodsLineup = [
         price: 249,
         monthly: 10,
         badge: "Most Popular",
+        image: "/laptops/airpods2.png",
         colors: [{ hex: "#f5f5f0", label: "White" }],
     },
     {
@@ -478,6 +556,7 @@ const airpodsLineup = [
         price: 129,
         monthly: 5,
         badge: null,
+        image: "/laptops/airpods4.png",
         colors: [{ hex: "#f5f5f0", label: "White" }],
     },
     {
@@ -490,6 +569,7 @@ const airpodsLineup = [
         price: 549,
         monthly: 22,
         badge: null,
+        image: "/laptops/airpods-max.png",
         colors: [
             { hex: "#c4a882", label: "Orange" },
             { hex: "#5b7c8a", label: "Blue" },
@@ -508,8 +588,72 @@ const whyAirpods = [
     { id: "wa6", icon: "/feature-icon1.svg", title: "Find My", body: "Locate misplaced buds with Precision Finding on supported models." },
 ];
 
-// Store catalog — Macs are derived from macLineup plus a few mock accessories.
-// `category` drives the Store filter chips. No API / no real inventory.
+// ─── iPad Landing page data ─────────────────────────────────────────────────
+const ipadLineup = [
+    {
+        id: "ipad-pro",
+        slug: "ipad-pro",
+        name: "iPad Pro",
+        chip: "M4 chip",
+        highlight: "Thinspired.",
+        description: "Ultra-thin design, stunning Ultra Retina XDR, and M4 performance for pro creative work.",
+        price: 999,
+        monthly: 83,
+        badge: "Most Popular",
+        image: "/laptops/ipad-pro.png",
+        colors: [
+            { hex: "#2e2c2e", label: "Space Black" },
+            { hex: "#e3d5c0", label: "Silver" },
+        ],
+    },
+    {
+        id: "ipad-air",
+        slug: "ipad-air",
+        name: "iPad Air",
+        chip: "M2 chip",
+        highlight: "Fresh air.",
+        description: "Serious performance in a thin, light design — perfect for everyday and creative projects.",
+        price: 599,
+        monthly: 50,
+        badge: null,
+        image: "/laptops/ipad-air.png",
+        colors: [
+            { hex: "#7d9bb8", label: "Blue" },
+            { hex: "#c4a882", label: "Starlight" },
+            { hex: "#e8a0b0", label: "Purple" },
+            { hex: "#2e2c2e", label: "Space Gray" },
+        ],
+    },
+    {
+        id: "ipad-a16",
+        slug: "ipad-a16",
+        name: "iPad",
+        chip: "A16 chip",
+        highlight: "Colourfully capable.",
+        description: "The all-screen design, A16 power, and all-day battery — iPad essentials at a great price.",
+        price: 349,
+        monthly: 29,
+        badge: null,
+        image: "/laptops/ipad-a16.png",
+        colors: [
+            { hex: "#7d9bb8", label: "Blue" },
+            { hex: "#e8a0b0", label: "Pink" },
+            { hex: "#f5e6c8", label: "Yellow" },
+            { hex: "#e3d5c0", label: "Silver" },
+        ],
+    },
+];
+
+const whyIpad = [
+    { id: "wp1", icon: "/feature-icon1.svg", title: "Apple Intelligence", body: "Writing tools and Image Playground — privately on device." },
+    { id: "wp2", icon: "/feature-icon2.svg", title: "Apple Pencil", body: "Pixel-perfect drawing, note-taking, and mark-up." },
+    { id: "wp3", icon: "/feature-icon3.svg", title: "Liquid Retina", body: "Vivid colour and responsive touch across every iPad." },
+    { id: "wp4", icon: "/feature-icon4.svg", title: "Multitasking", body: "Stage Manager and Split View keep apps side by side." },
+    { id: "wp5", icon: "/feature-icon5.svg", title: "All-day battery", body: "Power through class, commute, and creative sessions." },
+    { id: "wp6", icon: "/feature-icon1.svg", title: "iPadOS", body: "Designed for touch, Pencil, and keyboard — together." },
+];
+
+// Store catalog — lineup products + accessories. `category` drives filter chips.
 const storeAccessories = [
     {
         id: "magic-keyboard",
@@ -519,6 +663,7 @@ const storeAccessories = [
         price: 149,
         description: "A wireless keyboard with a numeric keypad and Touch ID.",
         highlight: "Typing and Touch ID, wireless.",
+        image: "/laptops/magic-keyboard.png",
         colors: [{ hex: "#e3d5c0", label: "Silver" }, { hex: "#2e2c2e", label: "Black" }],
         specs: [
             { label: "Connectivity", value: "Bluetooth / USB-C" },
@@ -535,6 +680,7 @@ const storeAccessories = [
         price: 99,
         description: "Multi-Touch surface. Pairs instantly with your Mac.",
         highlight: "Multi-Touch. Multi-purpose.",
+        image: "/laptops/magic-mouse.png",
         colors: [{ hex: "#e3d5c0", label: "Silver" }, { hex: "#2e2c2e", label: "Black" }],
         specs: [
             { label: "Connectivity", value: "Bluetooth / Lightning or USB-C (model dependent)" },
@@ -544,24 +690,42 @@ const storeAccessories = [
         ],
     },
     {
-        id: "usb-c-hub",
-        slug: "usb-c-hub",
-        name: "USB-C Digital AV Multiport Adapter",
+        id: "airtag",
+        slug: "airtag",
+        name: "AirTag",
         category: "Accessories",
-        price: 69,
-        description: "HDMI, USB-A, and USB-C charging in one compact adapter.",
-        highlight: "One port. More possibilities.",
-        colors: [{ hex: "#6e6e73", label: "White" }],
+        price: 29,
+        description: "Clip it on. Find your things with Precision Finding and the Find My network.",
+        highlight: "Keep track of what matters.",
+        image: "/laptops/airtag.png",
+        colors: [{ hex: "#f5f5f0", label: "White" }],
         specs: [
-            { label: "Ports", value: "HDMI, USB-A, USB-C (pass-through charging)" },
-            { label: "Video", value: "Up to 4K via HDMI (device dependent)" },
-            { label: "Compatibility", value: "Mac, iPad, and other USB-C devices" },
-            { label: "Design", value: "Compact multiport adapter" },
+            { label: "Battery", value: "User-replaceable CR2032" },
+            { label: "Network", value: "Find My" },
+            { label: "Features", value: "Precision Finding, Lost Mode" },
+            { label: "Water resistance", value: "IP67" },
+        ],
+    },
+    {
+        id: "apple-tv",
+        slug: "apple-tv",
+        name: "Apple TV 4K",
+        category: "Accessories",
+        price: 129,
+        description: "4K HDR, Dolby Atmos, and Apple Intelligence features on the biggest screen in your home.",
+        highlight: "The best way to watch.",
+        image: "/laptops/apple-tv.png",
+        colors: [{ hex: "#1c1c1e", label: "Black" }],
+        specs: [
+            { label: "Chip", value: "A15 Bionic" },
+            { label: "Video", value: "4K HDR, Dolby Vision" },
+            { label: "Audio", value: "Dolby Atmos" },
+            { label: "Storage", value: "64 GB / 128 GB" },
         ],
     },
 ];
 
-const storeCategories = ["All", "Mac", "Accessories"];
+const storeCategories = ["All", "Mac", "iPad", "iPhone", "Watch", "Vision", "AirPods", "Accessories"];
 
 // About page — static brand copy. No CMS / no API.
 const aboutValues = [
@@ -651,6 +815,7 @@ const footerLinks = [
     { label: "Support", link: "/support" },
     { label: "Store",   link: "/store" },
     { label: "Mac",     link: "/mac" },
+    { label: "iPad",    link: "/ipad" },
     { label: "Compare", link: "/compare" },
 ];
 
@@ -660,6 +825,7 @@ const buildSearchIndex = () => {
     const pages = [
         { id: "page-home", type: "Page", title: "Home", blurb: "MacBook Pro showcase", href: "/" },
         { id: "page-mac", type: "Page", title: "Mac", blurb: "Mac lineup and Why Mac", href: "/mac" },
+        { id: "page-ipad", type: "Page", title: "iPad", blurb: "iPad lineup", href: "/ipad" },
         { id: "page-iphone", type: "Page", title: "iPhone", blurb: "iPhone lineup and features", href: "/iphone" },
         { id: "page-watch", type: "Page", title: "Watch", blurb: "Apple Watch lineup", href: "/watch" },
         { id: "page-vision", type: "Page", title: "Vision", blurb: "Apple Vision Pro", href: "/vision" },
@@ -668,6 +834,7 @@ const buildSearchIndex = () => {
         { id: "page-store", type: "Page", title: "Store", blurb: "Shop Mac and accessories", href: "/store" },
         { id: "page-about", type: "Page", title: "About", blurb: "Values and timeline", href: "/about" },
         { id: "page-support", type: "Page", title: "Support", blurb: "Help and FAQs", href: "/support" },
+        { id: "page-signin", type: "Page", title: "Sign In", blurb: "Apple Account sign-in", href: "/signin" },
     ];
 
     const macs = macLineup.map((m) => ({
@@ -675,7 +842,15 @@ const buildSearchIndex = () => {
         type: "Mac",
         title: m.name,
         blurb: m.highlight,
-        href: `/mac/${m.slug}`,
+        href: m.storeScale != null ? `/mac/${m.slug}` : `/store/${m.slug}`,
+    }));
+
+    const ipads = ipadLineup.map((p) => ({
+        id: `ipad-${p.id}`,
+        type: "iPad",
+        title: p.name,
+        blurb: p.highlight,
+        href: "/ipad",
     }));
 
     const iphones = iphoneLineup.map((p) => ({
@@ -683,7 +858,7 @@ const buildSearchIndex = () => {
         type: "iPhone",
         title: p.name,
         blurb: p.highlight,
-        href: "/store",
+        href: "/iphone",
     }));
 
     const watches = watchLineup.map((p) => ({
@@ -726,7 +901,7 @@ const buildSearchIndex = () => {
         href: "/support",
     }));
 
-    return [...pages, ...macs, ...iphones, ...watches, ...vision, ...airpods, ...accessories, ...faqs];
+    return [...pages, ...macs, ...ipads, ...iphones, ...watches, ...vision, ...airpods, ...accessories, ...faqs];
 };
 
 const searchIndex = buildSearchIndex();
@@ -740,6 +915,7 @@ export {
     features,
     featureSequence,
     footerLinks,
+    ipadLineup,
     iphoneLineup,
     macLineup,
     navLinks,
@@ -754,6 +930,7 @@ export {
     visionLineup,
     watchLineup,
     whyAirpods,
+    whyIpad,
     whyIphone,
     whyMac,
     whyVision,

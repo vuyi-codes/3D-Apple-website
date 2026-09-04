@@ -20,8 +20,35 @@
   src: url("/fonts/bold.otf");
 }
 
+/* Global scrollbars — thin rounded thumb, transparent track (WebKit-first).
+   Thumb length still follows content size; we only slim the width/thickness. */
 * {
-  scrollbar-color: var(--color-dark-100) var(--color-black);
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: var(--color-dark-100) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--color-dark-100);
+  border-radius: 9999px;
+  border: 2px solid transparent; /* inset look so the thumb reads shorter/narrower */
+  background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-light-100);
+}
+
+*::-webkit-scrollbar-corner {
+  background: transparent;
 }
 
 :root {
@@ -415,9 +442,10 @@ body {
     @apply inline-block text-primary py-2 px-4 rounded-full font-semibold text-sm cursor-pointer hover:text-white transition-all duration-300 ease-in-out;
   }
 
-  /* ── Mac Landing page (+ shared with iPhone landing) ──────────────────── */
+  /* ── Mac Landing page (+ shared with iPhone / iPad / Watch / Vision / AirPods) ── */
   #mac-landing,
   #iphone-landing,
+  #ipad-landing,
   #watch-landing,
   #vision-landing,
   #airpods-landing {
@@ -427,6 +455,7 @@ body {
   /* Hero */
   #mac-hero,
   #iphone-hero,
+  #ipad-hero,
   #watch-hero,
   #vision-hero,
   #airpods-hero {
@@ -452,6 +481,7 @@ body {
   /* Lineup grid */
   #mac-lineup,
   #iphone-lineup,
+  #ipad-lineup,
   #watch-lineup,
   #vision-lineup,
   #airpods-lineup {
@@ -462,73 +492,90 @@ body {
     }
 
     .mac-lineup-grid {
-      @apply container mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8 2xl:px-0;
+      /* Desktop: 4 equal columns; row items stretch to tallest card (no fixed card height) */
+      @apply container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 2xl:gap-8 2xl:px-0 items-stretch;
     }
   }
 
-  /* Model card */
+  /* Model card — fills grid cell height via stretch + h-full (not a fixed height) */
   .mac-card {
     /* Cards start invisible + shifted up — GSAP reveals them on scroll */
-    @apply relative flex flex-col bg-[#1d1d1f] rounded-3xl p-8 opacity-0 translate-y-8;
+    @apply relative flex flex-col h-full bg-[#1d1d1f] rounded-3xl p-6 lg:p-7 opacity-0 translate-y-8;
 
     .mac-card-badge {
-      @apply absolute top-5 right-5 bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full;
+      @apply absolute top-4 right-4 bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full z-10;
     }
 
-    .mac-card-swatches {
-      @apply flex gap-2 mb-6;
-    }
-
-    .mac-swatch {
-      @apply block size-4 rounded-full ring-1 ring-white/20;
-    }
-
-    /* Gradient placeholder until real product images are in /public */
-    .mac-card-img-placeholder {
-      @apply w-full h-48 rounded-2xl mb-6;
-      background: linear-gradient(135deg, #2e2e30 0%, #1a1a1c 100%);
-    }
-
+    /* Natural content height; section gaps only — grow space lives below via mt-auto on Colour */
     .mac-card-body {
-      @apply flex flex-col gap-3 flex-1;
+      @apply flex flex-col gap-2;
     }
 
     .mac-card-chip {
-      @apply text-dark-100 text-xs font-medium uppercase tracking-widest;
+      @apply text-dark-100 text-xs font-medium uppercase tracking-widest shrink-0;
     }
 
     .mac-card-name {
-      @apply text-white font-semibold text-2xl;
-    }
-
-    .mac-card-highlight {
-      @apply text-white font-semibold text-lg;
+      @apply text-white font-semibold text-xl lg:text-2xl leading-snug line-clamp-2;
     }
 
     .mac-card-desc {
-      @apply text-dark-100 text-sm leading-relaxed flex-1;
+      @apply text-dark-100 text-sm leading-snug line-clamp-2;
     }
 
     .mac-card-pricing {
-      @apply flex flex-col gap-0.5 mt-4;
+      @apply flex flex-col gap-0.5;
     }
 
     .mac-card-price {
-      @apply text-white font-semibold text-xl;
+      @apply text-white font-semibold text-lg lg:text-xl;
     }
 
     .mac-card-monthly {
       @apply text-dark-100 text-sm;
     }
 
+    /* Pinned to bottom of stretched card so Colour + actions share a baseline per row */
+    .mac-card-swatches {
+      @apply flex flex-col gap-2 mt-auto pt-5;
+    }
+
+    .mac-swatches-label {
+      @apply text-dark-100 text-xs font-medium uppercase tracking-widest;
+    }
+
+    .mac-swatches-row {
+      @apply flex flex-wrap items-center gap-3;
+    }
+
+    .mac-swatch {
+      @apply size-6 shrink-0 rounded-full border border-white/25;
+    }
+
     .mac-card-actions {
-      @apply flex gap-3 mt-4 flex-wrap;
+      @apply flex gap-3 mt-5 flex-wrap;
     }
   }
 
-  /* Why Mac / Why iPhone */
+  /* Shared media slot — consistent image area only (card height still comes from grid stretch) */
+  .mac-card-img {
+    @apply w-full h-40 shrink-0 rounded-2xl mb-4 overflow-hidden flex items-center justify-center;
+    background: linear-gradient(135deg, #2e2e30 0%, #1a1a1c 100%);
+
+    img {
+      @apply max-h-full max-w-full w-auto h-auto object-contain p-3;
+    }
+  }
+
+  .mac-card-img-placeholder {
+    @apply w-full h-40 shrink-0 rounded-2xl mb-4;
+    background: linear-gradient(135deg, #2e2e30 0%, #1a1a1c 100%);
+  }
+
+  /* Why Mac / Why iPhone / Why iPad / … */
   #why-mac,
   #why-iphone,
+  #why-ipad,
   #why-watch,
   #why-vision,
   #why-airpods {
@@ -563,6 +610,7 @@ body {
   /* Compare / Store CTA */
   #mac-compare-cta,
   #iphone-store-cta,
+  #ipad-store-cta,
   #watch-store-cta,
   #vision-store-cta,
   #airpods-store-cta {
@@ -833,39 +881,87 @@ body {
   }
 
   .store-grid-inner {
-    @apply container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 2xl:px-0;
+    /* Desktop: 4 equal columns; stretch cells to tallest card in the row */
+    @apply container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 2xl:gap-8 2xl:px-0 items-stretch;
   }
 
   .store-card {
-    @apply flex flex-col bg-[#1d1d1f] rounded-3xl p-8 opacity-0;
+    @apply flex flex-col h-full bg-[#1d1d1f] rounded-3xl p-6 lg:p-7 opacity-0;
+
+    .store-card-body {
+      @apply flex flex-col gap-2;
+    }
 
     .store-card-cat {
-      @apply text-dark-100 text-xs uppercase tracking-widest mb-2;
+      @apply text-dark-100 text-xs uppercase tracking-widest;
     }
 
     .store-card-name {
-      @apply text-white font-semibold text-2xl;
+      @apply text-white font-semibold text-xl lg:text-2xl leading-snug line-clamp-2;
     }
 
     .store-card-desc {
-      @apply text-dark-100 text-sm mt-2 flex-1;
+      @apply text-dark-100 text-sm leading-snug line-clamp-2;
     }
 
     .store-card-price {
-      @apply text-white font-semibold text-xl mt-4;
+      @apply text-white font-semibold text-lg lg:text-xl;
     }
 
+    /* Colour picker — scoped to store cards; mt-auto baselines the row */
     .store-card-swatches {
-      @apply flex gap-2 mt-4;
+      @apply flex flex-col gap-2 mt-auto pt-5;
+    }
+
+    .store-swatches-label {
+      @apply text-dark-100 text-xs font-medium uppercase tracking-widest;
+    }
+
+    .store-swatches-row {
+      @apply flex flex-wrap items-center gap-3;
+    }
+
+    .store-swatch {
+      @apply size-6 shrink-0 rounded-full border border-white/25 cursor-pointer
+             p-0 appearance-none outline-none
+             transition-shadow duration-200
+             hover:ring-2 hover:ring-white/40;
     }
 
     .store-swatch-on {
-      @apply ring-2 ring-white;
+      @apply ring-2 ring-white ring-offset-2 ring-offset-[#1d1d1f];
     }
 
     .store-card-actions {
-      @apply flex flex-wrap gap-3 mt-6;
+      @apply flex flex-wrap gap-3 mt-5;
     }
+  }
+
+  .store-pagination {
+    @apply container mx-auto flex-center flex-wrap gap-4 mt-14 2xl:px-0;
+  }
+
+  .store-page-btn {
+    @apply py-2 px-5 rounded-full text-sm font-semibold border border-dark-200
+           text-dark-100 bg-transparent cursor-pointer
+           hover:border-white hover:text-white
+           transition-all duration-200
+           disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:border-dark-200 disabled:hover:text-dark-100;
+  }
+
+  .store-page-numbers {
+    @apply flex flex-wrap items-center gap-2;
+  }
+
+  .store-page-num {
+    @apply size-9 rounded-full text-sm font-semibold border border-dark-200
+           text-dark-100 bg-transparent cursor-pointer
+           hover:border-white hover:text-white
+           transition-all duration-200 flex-center;
+  }
+
+  .store-page-num-on {
+    @apply bg-primary border-primary text-white hover:bg-primary hover:border-primary hover:text-white;
   }
 
   /* Navbar bag badge */
@@ -992,8 +1088,12 @@ body {
     }
 
     .acc-visual {
-      @apply w-full max-w-md h-56 rounded-3xl my-6;
+      @apply w-full max-w-md h-56 shrink-0 rounded-3xl my-6 overflow-hidden flex items-center justify-center;
       background: linear-gradient(135deg, #2e2e30 0%, #1a1a1c 100%);
+
+      img {
+        @apply max-h-full max-w-full w-auto h-auto object-contain p-4;
+      }
     }
 
     .acc-color-row {
@@ -1427,6 +1527,154 @@ body {
     }
   }
   /* ── End Search ───────────────────────────────────────────────────────── */
+
+  /* ── Auth modal (Sign In / Forgot / Create) ───────────────────────────── */
+  .nav-signup-btn {
+    @apply text-white opacity-80 font-regular text-sm cursor-pointer
+           hover:opacity-100 transition-all duration-300 ease-in-out
+           bg-transparent border-none whitespace-nowrap;
+  }
+
+  .auth-backdrop {
+    @apply fixed inset-0 z-[80] bg-black/70;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .auth-layer {
+    @apply fixed inset-0 z-[90] flex items-center justify-center p-3 pointer-events-none;
+  }
+
+  #auth-modal {
+    @apply relative pointer-events-auto
+           w-[min(100%,26rem)] max-h-[min(90dvh,42rem)] overflow-y-auto
+           bg-[#1d1d1f] border border-dark-200 rounded-3xl p-8
+           flex flex-col gap-4 text-center;
+
+    @media (max-width: 480px) {
+      @apply w-full max-h-[92dvh] rounded-2xl p-6;
+    }
+
+    h2 {
+      @apply text-white font-semibold text-2xl pr-8 mt-1;
+    }
+
+    /* Header stack: logo → title → subtitle — more breathing room than default gap */
+    .auth-logo {
+      @apply mx-auto size-8 mb-3 opacity-90;
+    }
+
+    .auth-sub {
+      @apply text-dark-100 text-sm leading-relaxed mt-1 mb-2;
+
+      span {
+        @apply break-all;
+      }
+    }
+
+    .auth-modal-close {
+      @apply absolute top-5 right-5 text-dark-100 text-xl cursor-pointer
+             hover:text-white transition-all duration-200
+             bg-transparent border-none z-10;
+    }
+  }
+
+  .auth-modal-body {
+    @apply flex flex-col gap-4;
+  }
+
+  .auth-banner {
+    @apply text-sm text-left rounded-xl px-4 py-3 leading-relaxed;
+  }
+
+  .auth-banner-error {
+    @apply bg-[#ff453a]/15 text-[#ff453a];
+  }
+
+  .auth-banner-info {
+    @apply bg-primary/15 text-primary;
+  }
+
+  .auth-form {
+    @apply flex flex-col gap-4 text-left mt-1;
+
+    label {
+      @apply flex flex-col gap-2 text-dark-100 text-xs uppercase tracking-widest;
+    }
+
+    input {
+      @apply bg-black text-white text-sm font-regular normal-case tracking-normal
+             rounded-xl px-4 py-3 border border-dark-200 outline-none
+             focus:border-primary transition-all duration-200
+             disabled:opacity-50;
+    }
+
+    .auth-error {
+      @apply text-[#ff453a] text-xs font-regular normal-case tracking-normal;
+    }
+  }
+
+  .auth-forgot {
+    @apply self-start -mt-1;
+  }
+
+  .auth-text-link {
+    @apply text-primary text-sm font-regular cursor-pointer
+           hover:text-white transition-all duration-200
+           bg-transparent border-none p-0 inline;
+  }
+
+  .auth-submit {
+    @apply w-full text-center mt-1 disabled:opacity-60 disabled:cursor-not-allowed
+           disabled:hover:bg-primary disabled:hover:text-white;
+  }
+
+  .auth-divider {
+    @apply flex items-center gap-3 text-dark-100 text-xs uppercase tracking-widest my-1;
+
+    &::before,
+    &::after {
+      content: "";
+      @apply flex-1 h-px bg-dark-200;
+    }
+  }
+
+  .auth-oauth {
+    @apply flex flex-col gap-3;
+  }
+
+  .auth-oauth-icon {
+    @apply size-5 object-contain shrink-0;
+  }
+
+  .auth-oauth-apple {
+    @apply w-full rounded-full py-3 px-4 text-sm font-semibold
+           bg-white text-black cursor-pointer
+           hover:bg-neutral-200 transition-all duration-200
+           disabled:opacity-50 border-none
+           flex items-center justify-center gap-2.5;
+  }
+
+  .auth-oauth-google {
+    @apply w-full rounded-full py-3 px-4 text-sm font-semibold
+           bg-transparent text-white border border-dark-100 cursor-pointer
+           hover:border-white transition-all duration-200
+           disabled:opacity-50
+           flex items-center justify-center gap-2.5;
+  }
+
+  .auth-foot {
+    @apply text-dark-100 text-sm mt-1;
+  }
+
+  .auth-success {
+    @apply flex flex-col gap-4 items-center text-center;
+  }
+
+  .auth-success-actions {
+    @apply flex flex-col sm:flex-row gap-3 mt-2 w-full sm:justify-center;
+  }
+  /* ── End Auth modal ───────────────────────────────────────────────────── */
 
   footer {
     @apply container mx-auto py-7 max-lg:px-5;

@@ -30,7 +30,8 @@ const ProductDetail = () => {
     const isMobile = useMediaQuery({ query: "(max-width: 1024px)" });
 
     // Pull the matching model from mock data; redirect if slug is unknown
-    const product = macLineup.find((m) => m.slug === slug);
+    // Only MacBooks with a 3D viewer scale are valid detail pages
+    const product = macLineup.find((m) => m.slug === slug && m.storeScale != null);
     useEffect(() => {
         if (!product) navigate("/mac", { replace: true });
     }, [product, navigate]);

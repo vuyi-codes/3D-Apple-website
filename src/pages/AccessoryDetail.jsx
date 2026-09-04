@@ -8,16 +8,34 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import clsx from "clsx";
-import { storeAccessories } from "../constants";
+import { macLineup, storeAccessories } from "../constants";
 import useMacbookStore from "../store";
 import Footer from "../components/Footer";
+
+const detailCatalog = [
+    ...storeAccessories,
+    ...macLineup
+        .filter((m) => m.storeScale == null)
+        .map((m) => ({
+            id: m.id,
+            slug: m.slug,
+            name: m.name,
+            category: "Mac",
+            price: m.price,
+            description: m.description,
+            highlight: m.highlight,
+            image: m.image,
+            colors: m.colors,
+            specs: m.specs,
+        })),
+];
 
 const AccessoryDetail = () => {
     const { slug } = useParams();
     const navigate = useNavigate();
     const addToCart = useMacbookStore((s) => s.addToCart);
 
-    const product = storeAccessories.find((a) => a.slug === slug);
+    const product = detailCatalog.find((a) => a.slug === slug);
 
     useEffect(() => {
         if (!product) navigate("/store", { replace: true });
@@ -51,7 +69,7 @@ const AccessoryDetail = () => {
 
     if (!product) return null;
 
-    const { name, category, price, description, highlight, colors, specs } = product;
+    const { name, category, price, description, highlight, colors, specs, image } = product;
     const selected = colors[colorIndex] ?? colors[0];
 
     const handleAdd = () => {
@@ -72,7 +90,13 @@ const AccessoryDetail = () => {
                     <p className="acc-highlight acc-animate">{highlight}</p>
                     <p className="acc-desc acc-animate">{description}</p>
 
-                    <div className="acc-visual acc-animate" aria-hidden="true" />
+                    {image ? (
+                        <div className="acc-visual acc-animate">
+                            <img src={image} alt={name} />
+                        </div>
+                    ) : (
+                        <div className="acc-visual acc-animate" aria-hidden="true" />
+                    )}
 
                     <div className="acc-color-row acc-animate">
                         {colors.map(({ hex, label }, i) => (
