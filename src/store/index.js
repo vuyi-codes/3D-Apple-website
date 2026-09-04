@@ -63,6 +63,10 @@ const useMacbookStore = create((set) => ({
 
     clearCart: () => set({ cart: [] }),
 
+    // Last mock order after "Place Order" — frontend confirmation only
+    lastOrder: null, // { id, items, total, email, placedAt }
+    setLastOrder: (lastOrder) => set({ lastOrder }),
+
     // ── Site search overlay (client-side filter only — no API) ──
     searchOpen: false,
     openSearch: () => set({ searchOpen: true, cartOpen: false }),

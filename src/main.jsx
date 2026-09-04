@@ -20,6 +20,7 @@ import IphoneLanding from "./pages/IphoneLanding.jsx";
 import WatchLanding from "./pages/WatchLanding.jsx";
 import VisionLanding from "./pages/VisionLanding.jsx";
 import AirPodsLanding from "./pages/AirPodsLanding.jsx";
+import Checkout from "./pages/Checkout.jsx";
 
 // All routes share the App layout (Navbar + Outlet + Cart / Search).
 const router = createBrowserRouter([
@@ -37,6 +38,7 @@ const router = createBrowserRouter([
             { path: "compare", element: <Compare /> },
             { path: "store", element: <Store /> },
             { path: "store/:slug", element: <AccessoryDetail /> },
+            { path: "checkout", element: <Checkout /> },
             { path: "about", element: <About /> },
             { path: "support", element: <Support /> },
             { path: "*", element: <NotFound /> },

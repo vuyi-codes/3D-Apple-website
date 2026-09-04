@@ -1,7 +1,8 @@
 // CartDrawer — slide-out panel driven by Zustand `cartOpen` / `cart`.
 // Mounted once in App.jsx so it works from any route (navbar cart icon,
 // Store "Add to Bag", Product Detail "Add to Cart").
-// Frontend-only: Checkout is a disabled mock button, no payment / API.
+// Checkout links to /checkout — mock form only, no payment API.
+import { Link } from "react-router-dom";
 import useMacbookStore from "../store";
 
 const CartDrawer = () => {
@@ -87,10 +88,13 @@ const CartDrawer = () => {
                                 <span>Subtotal</span>
                                 <span>${subtotal.toLocaleString()}</span>
                             </div>
-                            {/* Mock checkout — no backend. Disabled on purpose. */}
-                            <button type="button" className="btn-primary-pill cart-checkout" disabled>
-                                Checkout (coming soon)
-                            </button>
+                            <Link
+                                to="/checkout"
+                                className="btn-primary-pill cart-checkout"
+                                onClick={closeCart}
+                            >
+                                Checkout
+                            </Link>
                             <button type="button" className="cart-clear" onClick={clearCart}>
                                 Clear bag
                             </button>
