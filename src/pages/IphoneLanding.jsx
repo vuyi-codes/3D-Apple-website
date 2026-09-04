@@ -33,21 +33,34 @@ const IphoneHero = () => {
 
     return (
         <section id="iphone-hero" ref={heroRef}>
-            <div className="iphone-hero-animate">
-                <p className="mac-eyebrow">iPhone</p>
-                <h1>Designed to be loved.</h1>
+            <div className="line-hero-media" aria-hidden="true">
+                <video
+                    src="/videos/iphone_bg.mp4"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                />
+                <div className="line-hero-overlay" />
             </div>
-            <p className="iphone-hero-animate mac-hero-sub">
-                Apple Intelligence. Camera Control. A18 family chips.
-                The most advanced iPhone lineup yet.
-            </p>
-            <div className="iphone-hero-animate mac-hero-actions">
-                <Link to="/store" className="btn-primary-pill">
-                    Shop iPhone
-                </Link>
-                <Link to="/support" className="btn-ghost-pill">
-                    Get Support →
-                </Link>
+
+            <div className="line-hero-content">
+                <div className="iphone-hero-animate">
+                    <p className="mac-eyebrow">iPhone</p>
+                    <h1>Designed to be loved.</h1>
+                </div>
+                <p className="iphone-hero-animate mac-hero-sub">
+                    Apple Intelligence. Camera Control. A18 family chips.
+                    The most advanced iPhone lineup yet.
+                </p>
+                <div className="iphone-hero-animate mac-hero-actions">
+                    <Link to="/store" className="btn-primary-pill">
+                        Shop iPhone
+                    </Link>
+                    <Link to="/support" className="btn-ghost-pill">
+                        Get Support →
+                    </Link>
+                </div>
             </div>
         </section>
     );

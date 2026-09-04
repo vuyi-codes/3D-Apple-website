@@ -20,6 +20,7 @@ import ProductCard from "./ProductCard";
  * @param {Array}  props.lineup
  * @param {Array}  props.whyItems
  * @param {string} props.shopLabel
+ * @param {string} [props.heroVideo] — optional section-bound hero background mp4
  */
 const ProductLineLanding = ({
     idPrefix,
@@ -31,6 +32,7 @@ const ProductLineLanding = ({
     lineup,
     whyItems,
     shopLabel,
+    heroVideo,
 }) => {
     const heroRef = useRef(null);
     const isMobile = useMediaQuery({ query: "(max-width: 1024px)" });
@@ -82,23 +84,45 @@ const ProductLineLanding = ({
         );
     }, { scope: heroRef, dependencies: [isMobile, idPrefix] });
 
+    const heroCopy = (
+        <>
+            <div className="line-hero-animate">
+                <p className="mac-eyebrow">{eyebrow}</p>
+                <h1>{headline}</h1>
+            </div>
+            <p className="line-hero-animate mac-hero-sub">{sub}</p>
+            <div className="line-hero-animate mac-hero-actions">
+                <Link to="/store" className="btn-primary-pill">
+                    {shopLabel}
+                </Link>
+                <Link to="/support" className="btn-ghost-pill">
+                    Get Support →
+                </Link>
+            </div>
+        </>
+    );
+
     return (
         <>
             <main id={pageId} ref={heroRef}>
                 <section id={heroId}>
-                    <div className="line-hero-animate">
-                        <p className="mac-eyebrow">{eyebrow}</p>
-                        <h1>{headline}</h1>
-                    </div>
-                    <p className="line-hero-animate mac-hero-sub">{sub}</p>
-                    <div className="line-hero-animate mac-hero-actions">
-                        <Link to="/store" className="btn-primary-pill">
-                            {shopLabel}
-                        </Link>
-                        <Link to="/support" className="btn-ghost-pill">
-                            Get Support →
-                        </Link>
-                    </div>
+                    {heroVideo ? (
+                        <>
+                            <div className="line-hero-media" aria-hidden="true">
+                                <video
+                                    src={heroVideo}
+                                    autoPlay
+                                    muted
+                                    loop
+                                    playsInline
+                                />
+                                <div className="line-hero-overlay" />
+                            </div>
+                            <div className="line-hero-content">{heroCopy}</div>
+                        </>
+                    ) : (
+                        heroCopy
+                    )}
                 </section>
 
                 <section id={lineupId}>

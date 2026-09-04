@@ -13,6 +13,7 @@ const IpadLanding = () => (
         lineup={ipadLineup}
         whyItems={whyIpad}
         shopLabel="Shop iPad"
+        heroVideo="/videos/ipad_bg.mp4"
     />
 );
 

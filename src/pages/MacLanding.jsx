@@ -39,21 +39,34 @@ const MacHero = () => {
 
     return (
         <section id="mac-hero" ref={heroRef}>
-            <div className="mac-hero-animate">
-                <p className="mac-eyebrow">Mac</p>
-                <h1>The best Mac for every ambition.</h1>
+            <div className="line-hero-media" aria-hidden="true">
+                <video
+                    src="/videos/mac_bg.mp4"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                />
+                <div className="line-hero-overlay" />
             </div>
-            <p className="mac-hero-animate mac-hero-sub">
-                Powered by Apple silicon. Built for Apple Intelligence.
-                Designed to go anywhere you do.
-            </p>
-            <div className="mac-hero-animate mac-hero-actions">
-                <Link to="/mac/macbook-pro-14" className="btn-primary-pill">
-                    Shop MacBook Pro
-                </Link>
-                <Link to="/compare" className="btn-ghost-pill">
-                    Compare all models →
-                </Link>
+
+            <div className="line-hero-content">
+                <div className="mac-hero-animate">
+                    <p className="mac-eyebrow">Mac</p>
+                    <h1>The best Mac for every ambition.</h1>
+                </div>
+                <p className="mac-hero-animate mac-hero-sub">
+                    Powered by Apple silicon. Built for Apple Intelligence.
+                    Designed to go anywhere you do.
+                </p>
+                <div className="mac-hero-animate mac-hero-actions">
+                    <Link to="/mac/macbook-pro-14" className="btn-primary-pill">
+                        Shop MacBook Pro
+                    </Link>
+                    <Link to="/compare" className="btn-ghost-pill">
+                        Compare all models →
+                    </Link>
+                </div>
             </div>
         </section>
     );

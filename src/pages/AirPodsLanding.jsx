@@ -13,6 +13,7 @@ const AirPodsLanding = () => (
         lineup={airpodsLineup}
         whyItems={whyAirpods}
         shopLabel="Shop AirPods"
+        heroVideo="/videos/airpods_bg.mp4"
     />
 );
 

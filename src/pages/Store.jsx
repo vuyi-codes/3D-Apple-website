@@ -181,11 +181,27 @@ const Store = () => {
         <>
             <main id="store-page">
                 <section id="store-hero">
-                    <p className="store-eyebrow store-hero-animate">Store</p>
-                    <h1 className="store-hero-animate">The best way to buy the products you love.</h1>
-                    <p className="store-hero-sub store-hero-animate">
-                        Browse Mac, iPad, iPhone, Watch, and more. Bag is local-only — no real checkout yet.
-                    </p>
+                    <div className="line-hero-media" aria-hidden="true">
+                        <video
+                            src="/videos/store_bg.mp4"
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                        />
+                        <div className="line-hero-overlay" />
+                    </div>
+
+                    <div className="line-hero-content">
+                        <p className="store-eyebrow store-hero-animate">Store</p>
+                        <h1 className="store-hero-animate">
+                            The best way to buy the products you love.
+                        </h1>
+                        <p className="store-hero-sub store-hero-animate">
+                            Browse Mac, iPad, iPhone, Watch, and more. Bag is local-only — no real
+                            checkout yet.
+                        </p>
+                    </div>
                 </section>
 
                 <section id="store-filters">

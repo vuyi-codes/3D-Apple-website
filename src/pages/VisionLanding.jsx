@@ -13,6 +13,7 @@ const VisionLanding = () => (
         lineup={visionLineup}
         whyItems={whyVision}
         shopLabel="Shop Vision Pro"
+        heroVideo="/videos/vision_bg.mp4"
     />
 );
 

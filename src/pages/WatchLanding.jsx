@@ -13,6 +13,7 @@ const WatchLanding = () => (
         lineup={watchLineup}
         whyItems={whyWatch}
         shopLabel="Shop Apple Watch"
+        heroVideo="/videos/watch_bg.mp4"
     />
 );
 
