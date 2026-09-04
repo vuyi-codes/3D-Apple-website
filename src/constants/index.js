@@ -1,13 +1,12 @@
 // Each nav item has a label (display text) and a path (React Router route).
-// Product lines without pages yet (Watch / Vision / AirPods) stay as "#".
-// iPhone and Support are live; About lives in the footer.
+// All product-line landings are live; About lives in the footer.
 const navLinks = [
     { label: "Store",   path: "/store" },
     { label: "Mac",     path: "/mac" },
     { label: "iPhone",  path: "/iphone" },
-    { label: "Watch",   path: "#" },
-    { label: "Vision",  path: "#" },
-    { label: "AirPods", path: "#" },
+    { label: "Watch",   path: "/watch" },
+    { label: "Vision",  path: "/vision" },
+    { label: "AirPods", path: "/airpods" },
     { label: "Support", path: "/support" },
 ];
 
@@ -375,6 +374,140 @@ const whyIphone = [
     },
 ];
 
+// ─── Watch / Vision / AirPods landings (mock cards, no 3D) ───────────────────
+const watchLineup = [
+    {
+        id: "watch-ultra-2",
+        slug: "watch-ultra-2",
+        name: "Apple Watch Ultra 2",
+        chip: "S9 SiP",
+        highlight: "Next-level adventure.",
+        description: "49mm titanium case, precision dual-frequency GPS, and the brightest Apple Watch display.",
+        price: 799,
+        monthly: 33,
+        badge: null,
+        colors: [{ hex: "#c2bcb2", label: "Natural" }, { hex: "#1c1c1e", label: "Black" }],
+    },
+    {
+        id: "watch-series-10",
+        slug: "watch-series-10",
+        name: "Apple Watch Series 10",
+        chip: "S10 SiP",
+        highlight: "Thinnest. Biggest display. Advanced health.",
+        description: "Sleep apnea notifications, faster charging, and a wider angle OLED display.",
+        price: 399,
+        monthly: 16,
+        badge: "Most Popular",
+        colors: [
+            { hex: "#d4a574", label: "Rose Gold" },
+            { hex: "#c0c0c0", label: "Silver" },
+            { hex: "#4a4a4a", label: "Jet Black" },
+        ],
+    },
+    {
+        id: "watch-se",
+        slug: "watch-se",
+        name: "Apple Watch SE",
+        chip: "S8 SiP",
+        highlight: "A great deal. To have on hand.",
+        description: "Crash Detection, heart rate notifications, and watchOS essentials — at a friendly price.",
+        price: 249,
+        monthly: 10,
+        badge: null,
+        colors: [
+            { hex: "#c0c0c0", label: "Silver" },
+            { hex: "#2e2c2e", label: "Midnight" },
+            { hex: "#e8d4c4", label: "Starlight" },
+        ],
+    },
+];
+
+const whyWatch = [
+    { id: "ww1", icon: "/feature-icon1.svg", title: "Health", body: "Heart rate, ECG, Blood Oxygen, and sleep insights on your wrist." },
+    { id: "ww2", icon: "/feature-icon2.svg", title: "Fitness", body: "Workout metrics for running, cycling, swimming, and more." },
+    { id: "ww3", icon: "/feature-icon3.svg", title: "Safety", body: "Fall Detection, Crash Detection, and Emergency SOS." },
+    { id: "ww4", icon: "/feature-icon4.svg", title: "Connectivity", body: "Calls, texts, and apps — with or without your iPhone nearby." },
+    { id: "ww5", icon: "/feature-icon5.svg", title: "Carbon neutral", body: "Pairs with certain bands to achieve a carbon neutral Apple Watch." },
+    { id: "ww6", icon: "/feature-icon1.svg", title: "watchOS", body: "Widgets, Smart Stack, and apps designed for a glance." },
+];
+
+const visionLineup = [
+    {
+        id: "vision-pro",
+        slug: "vision-pro",
+        name: "Apple Vision Pro",
+        chip: "M2 + R1",
+        highlight: "Welcome to spatial computing.",
+        description: "Infinite canvas for apps, cinema-quality entertainment, and FaceTime that feels present.",
+        price: 3499,
+        monthly: 291,
+        badge: null,
+        colors: [{ hex: "#e8e8e8", label: "Silver" }],
+    },
+];
+
+const whyVision = [
+    { id: "wv1", icon: "/feature-icon1.svg", title: "Spatial apps", body: "Scale windows, place them anywhere, and work across multiple apps at once." },
+    { id: "wv2", icon: "/feature-icon2.svg", title: "Immersive video", body: "3D movies and Environments that transform any room." },
+    { id: "wv3", icon: "/feature-icon3.svg", title: "EyeSight", body: "Others can see your eyes — so you're never cut off from the people around you." },
+    { id: "wv4", icon: "/feature-icon4.svg", title: "Input", body: "Eyes, hands, and voice — no controllers required." },
+    { id: "wv5", icon: "/feature-icon5.svg", title: "Privacy", body: "Optic ID unlocks the device. Eye tracking data stays protected." },
+    { id: "wv6", icon: "/feature-icon1.svg", title: "visionOS", body: "Familiar apps from iPhone and iPad, redesigned for space." },
+];
+
+const airpodsLineup = [
+    {
+        id: "airpods-pro-2",
+        slug: "airpods-pro-2",
+        name: "AirPods Pro 2",
+        chip: "H2 chip",
+        highlight: "Adaptive Audio. Now playing.",
+        description: "Active Noise Cancellation, Transparency, and Personalized Spatial Audio with USB-C case.",
+        price: 249,
+        monthly: 10,
+        badge: "Most Popular",
+        colors: [{ hex: "#f5f5f0", label: "White" }],
+    },
+    {
+        id: "airpods-4",
+        slug: "airpods-4",
+        name: "AirPods 4",
+        chip: "H2 chip",
+        highlight: "Iconic. Now supersonic.",
+        description: "Open-ear design with optional Active Noise Cancellation and improved fit.",
+        price: 129,
+        monthly: 5,
+        badge: null,
+        colors: [{ hex: "#f5f5f0", label: "White" }],
+    },
+    {
+        id: "airpods-max",
+        slug: "airpods-max",
+        name: "AirPods Max",
+        chip: "H1 chip",
+        highlight: "Sound. Beyond.",
+        description: "Computational audio, Adaptive EQ, and a breathable knit mesh canopy.",
+        price: 549,
+        monthly: 22,
+        badge: null,
+        colors: [
+            { hex: "#c4a882", label: "Orange" },
+            { hex: "#5b7c8a", label: "Blue" },
+            { hex: "#f5f5f0", label: "Silver" },
+            { hex: "#2e2c2e", label: "Midnight" },
+        ],
+    },
+];
+
+const whyAirpods = [
+    { id: "wa1", icon: "/feature-icon1.svg", title: "H2 chip", body: "Smarter noise control, richer audio, and seamless device switching." },
+    { id: "wa2", icon: "/feature-icon2.svg", title: "Spatial Audio", body: "Theatre-like sound that tracks your head movement." },
+    { id: "wa3", icon: "/feature-icon3.svg", title: "Hearing features", body: "Hearing Test and Hearing Aid features on supported AirPods Pro 2." },
+    { id: "wa4", icon: "/feature-icon4.svg", title: "Magical pairing", body: "One tap setup with every Apple device signed into your Apple ID." },
+    { id: "wa5", icon: "/feature-icon5.svg", title: "Battery", body: "Hours of listening with a case that tops you up on the go." },
+    { id: "wa6", icon: "/feature-icon1.svg", title: "Find My", body: "Locate misplaced buds with Precision Finding on supported models." },
+];
+
 // Store catalog — Macs are derived from macLineup plus a few mock accessories.
 // `category` drives the Store filter chips. No API / no real inventory.
 const storeAccessories = [
@@ -507,6 +640,9 @@ const buildSearchIndex = () => {
         { id: "page-home", type: "Page", title: "Home", blurb: "MacBook Pro showcase", href: "/" },
         { id: "page-mac", type: "Page", title: "Mac", blurb: "Mac lineup and Why Mac", href: "/mac" },
         { id: "page-iphone", type: "Page", title: "iPhone", blurb: "iPhone lineup and features", href: "/iphone" },
+        { id: "page-watch", type: "Page", title: "Watch", blurb: "Apple Watch lineup", href: "/watch" },
+        { id: "page-vision", type: "Page", title: "Vision", blurb: "Apple Vision Pro", href: "/vision" },
+        { id: "page-airpods", type: "Page", title: "AirPods", blurb: "AirPods lineup", href: "/airpods" },
         { id: "page-compare", type: "Page", title: "Compare Macs", blurb: "Side-by-side specs", href: "/compare" },
         { id: "page-store", type: "Page", title: "Store", blurb: "Shop Mac and accessories", href: "/store" },
         { id: "page-about", type: "Page", title: "About", blurb: "Values and timeline", href: "/about" },
@@ -529,6 +665,30 @@ const buildSearchIndex = () => {
         href: "/store",
     }));
 
+    const watches = watchLineup.map((p) => ({
+        id: `watch-${p.id}`,
+        type: "Watch",
+        title: p.name,
+        blurb: p.highlight,
+        href: "/store",
+    }));
+
+    const vision = visionLineup.map((p) => ({
+        id: `vision-${p.id}`,
+        type: "Vision",
+        title: p.name,
+        blurb: p.highlight,
+        href: "/store",
+    }));
+
+    const airpods = airpodsLineup.map((p) => ({
+        id: `airpods-${p.id}`,
+        type: "AirPods",
+        title: p.name,
+        blurb: p.highlight,
+        href: "/store",
+    }));
+
     const accessories = storeAccessories.map((a) => ({
         id: `acc-${a.id}`,
         type: "Accessory",
@@ -545,7 +705,7 @@ const buildSearchIndex = () => {
         href: "/support",
     }));
 
-    return [...pages, ...macs, ...iphones, ...accessories, ...faqs];
+    return [...pages, ...macs, ...iphones, ...watches, ...vision, ...airpods, ...accessories, ...faqs];
 };
 
 const searchIndex = buildSearchIndex();
@@ -555,6 +715,7 @@ const searchIndex = buildSearchIndex();
 export {
     aboutTimeline,
     aboutValues,
+    airpodsLineup,
     features,
     featureSequence,
     footerLinks,
@@ -569,6 +730,11 @@ export {
     storeCategories,
     supportFaqs,
     supportTopics,
+    visionLineup,
+    watchLineup,
+    whyAirpods,
     whyIphone,
     whyMac,
+    whyVision,
+    whyWatch,
 };

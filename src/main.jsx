@@ -16,19 +16,11 @@ import About from "./pages/About.jsx";
 import Support from "./pages/Support.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import IphoneLanding from "./pages/IphoneLanding.jsx";
+import WatchLanding from "./pages/WatchLanding.jsx";
+import VisionLanding from "./pages/VisionLanding.jsx";
+import AirPodsLanding from "./pages/AirPodsLanding.jsx";
 
-// Route tree:
-//  /                   → Home (all existing homepage sections)
-//  /mac                → Mac lineup landing
-//  /mac/:model         → Individual product detail (e.g. /mac/macbook-pro-14)
-//  /iphone             → iPhone lineup landing (mock cards, no 3D)
-//  /compare            → Side-by-side spec comparison
-//  /store              → Store shell + cart drawer
-//  /about              → Brand / about page
-//  /support            → Support / FAQ page
-//  *                   → 404 NotFound (any unmatched path)
-//
-// All routes share the App layout (Navbar + Outlet).
+// All routes share the App layout (Navbar + Outlet + Cart / Search).
 const router = createBrowserRouter([
     {
         path: "/",
@@ -38,6 +30,9 @@ const router = createBrowserRouter([
             { path: "mac", element: <MacLanding /> },
             { path: "mac/:model", element: <ProductDetail /> },
             { path: "iphone", element: <IphoneLanding /> },
+            { path: "watch", element: <WatchLanding /> },
+            { path: "vision", element: <VisionLanding /> },
+            { path: "airpods", element: <AirPodsLanding /> },
             { path: "compare", element: <Compare /> },
             { path: "store", element: <Store /> },
             { path: "about", element: <About /> },

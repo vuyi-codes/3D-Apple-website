@@ -417,13 +417,19 @@ body {
 
   /* ── Mac Landing page (+ shared with iPhone landing) ──────────────────── */
   #mac-landing,
-  #iphone-landing {
+  #iphone-landing,
+  #watch-landing,
+  #vision-landing,
+  #airpods-landing {
     @apply pt-[7vh]; /* offset for fixed navbar */
   }
 
   /* Hero */
   #mac-hero,
-  #iphone-hero {
+  #iphone-hero,
+  #watch-hero,
+  #vision-hero,
+  #airpods-hero {
     @apply col-center gap-6 py-32 px-5 text-center bg-black;
 
     .mac-eyebrow {
@@ -445,7 +451,10 @@ body {
 
   /* Lineup grid */
   #mac-lineup,
-  #iphone-lineup {
+  #iphone-lineup,
+  #watch-lineup,
+  #vision-lineup,
+  #airpods-lineup {
     @apply py-20 px-5 bg-black;
 
     .mac-section-title {
@@ -519,7 +528,10 @@ body {
 
   /* Why Mac / Why iPhone */
   #why-mac,
-  #why-iphone {
+  #why-iphone,
+  #why-watch,
+  #why-vision,
+  #why-airpods {
     @apply py-24 px-5 bg-[#0a0a0a];
 
     .mac-section-title {
@@ -550,7 +562,10 @@ body {
 
   /* Compare / Store CTA */
   #mac-compare-cta,
-  #iphone-store-cta {
+  #iphone-store-cta,
+  #watch-store-cta,
+  #vision-store-cta,
+  #airpods-store-cta {
     @apply col-center gap-6 py-28 px-5 bg-black text-center;
 
     .mac-eyebrow {
