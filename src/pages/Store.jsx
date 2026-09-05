@@ -49,6 +49,18 @@ const catalog = [
     })),
 ];
 
+// Newest / featured additions shown above the category filters (mock “latest”)
+const LATEST_IDS = [
+    "iphone-17-pro",
+    "mac-mini",
+    "ipad-pro",
+    "airpods-pro-2",
+];
+
+const latestProducts = LATEST_IDS.map((id) =>
+    catalog.find((p) => p.id === id)
+).filter(Boolean);
+
 // 3 rows × current column count (matches .store-grid-inner breakpoints)
 const pageSizeForColumns = (cols) => cols * 3;
 
@@ -156,11 +168,24 @@ const Store = () => {
             { opacity: 0, y: 28 },
             { opacity: 1, y: 0, duration: 0.75, stagger: 0.1, ease: "power2.out" }
         );
+
+        gsap.fromTo(
+            "#store-latest .store-card",
+            { opacity: 0, y: 24 },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 0.6,
+                stagger: 0.08,
+                ease: "power2.out",
+                delay: 0.2,
+            }
+        );
     }, []);
 
     useGSAP(() => {
         gsap.fromTo(
-            ".store-card",
+            "#store-grid .store-card",
             { opacity: 0, y: 24 },
             {
                 opacity: 1,
@@ -201,6 +226,18 @@ const Store = () => {
                             Browse Mac, iPad, iPhone, Watch, and more. Bag is local-only — no real
                             checkout yet.
                         </p>
+                    </div>
+                </section>
+
+                <section id="store-latest" aria-labelledby="store-latest-title">
+                    <h2 id="store-latest-title" className="store-latest-title">
+                        The latest.
+                    </h2>
+                    <p className="store-latest-sub">New products just added to the Store.</p>
+                    <div className="store-grid-inner">
+                        {latestProducts.map((product) => (
+                            <StoreCard key={`latest-${product.id}`} product={product} />
+                        ))}
                     </div>
                 </section>
 

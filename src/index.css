@@ -969,6 +969,18 @@ body {
     @apply text-dark-100 text-sm font-medium tracking-widest uppercase;
   }
 
+  #store-latest {
+    @apply px-5 pt-12 pb-4 bg-black;
+  }
+
+  .store-latest-title {
+    @apply container mx-auto text-white font-semibold text-3xl lg:text-4xl 2xl:px-0 mb-2;
+  }
+
+  .store-latest-sub {
+    @apply container mx-auto text-dark-100 text-base 2xl:px-0 mb-8;
+  }
+
   #store-filters {
     /* Own section below the hero — pt-10 (~40px) clears the video edge */
     @apply relative z-10 flex-center flex-wrap gap-3 px-5 pt-10 pb-10 bg-black;
