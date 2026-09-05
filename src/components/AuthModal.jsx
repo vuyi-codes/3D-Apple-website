@@ -36,10 +36,11 @@ const AuthModal = () => {
         name: "",
         email: "",
         password: "",
-        confirm: "",
     });
     const [createErrors, setCreateErrors] = useState({});
     const [createLoading, setCreateLoading] = useState(false);
+    const [showSignInPassword, setShowSignInPassword] = useState(false);
+    const [showCreatePassword, setShowCreatePassword] = useState(false);
 
     const panelRef = useRef(null);
     const backdropRef = useRef(null);
@@ -78,9 +79,11 @@ const AuthModal = () => {
         setForgotEmail("");
         setForgotErrors({});
         setForgotLoading(false);
-        setCreate({ name: "", email: "", password: "", confirm: "" });
+        setCreate({ name: "", email: "", password: "" });
         setCreateErrors({});
         setCreateLoading(false);
+        setShowSignInPassword(false);
+        setShowCreatePassword(false);
     }, [authOpen]);
 
     // Focus first useful field when view changes while open
@@ -229,8 +232,6 @@ const AuthModal = () => {
         else if (!emailOk(create.email)) next.email = "Enter a valid email address.";
         if (!create.password) next.password = "Create a password.";
         else if (create.password.length < 6) next.password = "Use at least 6 characters.";
-        if (!create.confirm) next.confirm = "Confirm your password.";
-        else if (create.confirm !== create.password) next.confirm = "Passwords don’t match.";
         setCreateErrors(next);
         return Object.keys(next).length === 0;
     };
@@ -321,14 +322,29 @@ const AuthModal = () => {
                                     </label>
                                     <label>
                                         Password
-                                        <input
-                                            type="password"
-                                            autoComplete="current-password"
-                                            value={password}
-                                            disabled={loading}
-                                            onChange={(e) => setPassword(e.target.value)}
-                                            aria-invalid={Boolean(signInErrors.password)}
-                                        />
+                                        <div className="auth-password-wrap">
+                                            <input
+                                                type={showSignInPassword ? "text" : "password"}
+                                                autoComplete="current-password"
+                                                value={password}
+                                                disabled={loading}
+                                                onChange={(e) => setPassword(e.target.value)}
+                                                aria-invalid={Boolean(signInErrors.password)}
+                                            />
+                                            <button
+                                                type="button"
+                                                className="auth-password-toggle"
+                                                onClick={() => setShowSignInPassword((v) => !v)}
+                                                aria-label={
+                                                    showSignInPassword
+                                                        ? "Hide password"
+                                                        : "Show password"
+                                                }
+                                                disabled={loading}
+                                            >
+                                                {showSignInPassword ? "Hide" : "Show"}
+                                            </button>
+                                        </div>
                                         {signInErrors.password && (
                                             <span className="auth-error">{signInErrors.password}</span>
                                         )}
@@ -540,32 +556,32 @@ const AuthModal = () => {
                                     </label>
                                     <label>
                                         Password
-                                        <input
-                                            type="password"
-                                            name="password"
-                                            autoComplete="new-password"
-                                            value={create.password}
-                                            disabled={createLoading}
-                                            onChange={onCreateChange}
-                                            aria-invalid={Boolean(createErrors.password)}
-                                        />
+                                        <div className="auth-password-wrap">
+                                            <input
+                                                type={showCreatePassword ? "text" : "password"}
+                                                name="password"
+                                                autoComplete="new-password"
+                                                value={create.password}
+                                                disabled={createLoading}
+                                                onChange={onCreateChange}
+                                                aria-invalid={Boolean(createErrors.password)}
+                                            />
+                                            <button
+                                                type="button"
+                                                className="auth-password-toggle"
+                                                onClick={() => setShowCreatePassword((v) => !v)}
+                                                aria-label={
+                                                    showCreatePassword
+                                                        ? "Hide password"
+                                                        : "Show password"
+                                                }
+                                                disabled={createLoading}
+                                            >
+                                                {showCreatePassword ? "Hide" : "Show"}
+                                            </button>
+                                        </div>
                                         {createErrors.password && (
                                             <span className="auth-error">{createErrors.password}</span>
-                                        )}
-                                    </label>
-                                    <label>
-                                        Confirm password
-                                        <input
-                                            type="password"
-                                            name="confirm"
-                                            autoComplete="new-password"
-                                            value={create.confirm}
-                                            disabled={createLoading}
-                                            onChange={onCreateChange}
-                                            aria-invalid={Boolean(createErrors.confirm)}
-                                        />
-                                        {createErrors.confirm && (
-                                            <span className="auth-error">{createErrors.confirm}</span>
                                         )}
                                     </label>
                                     <button
