@@ -128,7 +128,7 @@ body {
       }
 
       /* Desktop nav links — ul + anchor styles */
-      ul {
+      ul.nav-desktop-links {
         @apply flex-center gap-8;
 
         /* NavLink / <a> base style — visible only on md+ */
@@ -142,6 +142,71 @@ body {
         @apply bg-transparent border-none outline-none cursor-pointer;
       }
     }
+  }
+
+  /* Mega-menu hover zone wraps nav + panel so leaving either closes the menu */
+  .nav-mega-zone {
+    @apply relative w-full;
+  }
+
+  .nav-mega-panel {
+    @apply hidden md:block absolute top-full left-0 w-full z-[51]
+           bg-[#f5f5f7] text-black overflow-hidden
+           max-h-0 opacity-0 pointer-events-none
+           transition-[max-height,opacity] duration-300 ease-in-out;
+  }
+
+  .nav-mega-panel-open {
+    @apply max-h-[28rem] opacity-100 pointer-events-auto;
+  }
+
+  .nav-mega-inner {
+    @apply container mx-auto px-5 2xl:px-0 py-10 md:py-12
+           grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10;
+  }
+
+  .nav-mega-col {
+    @apply flex flex-col gap-3;
+  }
+
+  .nav-mega-heading {
+    @apply text-xs font-medium text-[#6e6e73] tracking-wide mb-1;
+  }
+
+  .nav-mega-explore {
+    @apply flex flex-col gap-2.5;
+
+    a {
+      @apply text-2xl font-semibold text-[#1d1d1f] leading-tight
+             transition-colors duration-200;
+
+      &:hover {
+        color: var(--color-primary);
+      }
+    }
+  }
+
+  .nav-mega-more {
+    @apply flex flex-col gap-2;
+
+    a {
+      @apply text-sm font-medium text-[#1d1d1f]
+             transition-colors duration-200;
+
+      &:hover {
+        color: var(--color-primary);
+      }
+    }
+  }
+
+  .nav-mega-backdrop {
+    @apply fixed inset-0 top-[7vh] z-40 bg-black/40 backdrop-blur-md
+           opacity-0 pointer-events-none
+           transition-opacity duration-300 ease-in-out;
+  }
+
+  .nav-mega-backdrop-open {
+    @apply opacity-100 pointer-events-auto;
   }
 
   #hero {
@@ -1298,7 +1363,7 @@ body {
   }
 
   #about-hero {
-    @apply col-center gap-6 py-32 px-5 text-center;
+    @apply relative col-center gap-6 py-32 px-5 text-center overflow-hidden w-full;
 
     h1 {
       @apply font-semibold text-5xl lg:text-7xl text-white;
@@ -1306,6 +1371,22 @@ body {
 
     .about-hero-sub {
       @apply text-dark-100 text-lg lg:text-xl max-w-2xl;
+    }
+
+    .line-hero-media {
+      @apply absolute inset-0 z-0 pointer-events-none overflow-hidden;
+    }
+
+    .line-hero-media video {
+      @apply absolute inset-0 size-full object-cover;
+    }
+
+    .line-hero-overlay {
+      @apply absolute inset-0 z-[1] bg-black/55;
+    }
+
+    .line-hero-content {
+      @apply relative z-10 flex flex-col items-center gap-6 w-full max-w-full;
     }
   }
 

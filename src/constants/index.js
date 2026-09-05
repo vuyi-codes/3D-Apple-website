@@ -906,6 +906,102 @@ const buildSearchIndex = () => {
 
 const searchIndex = buildSearchIndex();
 
+// Desktop mega-menu content for primary nav items (Support has no mega menu).
+// Explore = large primary links; more = smaller secondary column (Apple-style).
+const navMegaMenus = {
+    Store: {
+        exploreTitle: "Shop",
+        explore: [
+            { label: "Shop the Latest", href: "/store" },
+            { label: "Mac", href: "/mac" },
+            { label: "iPad", href: "/ipad" },
+            { label: "iPhone", href: "/iphone" },
+            { label: "Apple Watch", href: "/watch" },
+            { label: "Accessories", href: "/store" },
+        ],
+        moreTitle: "Quick Links",
+        more: [
+            { label: "Order Status", href: "/support" },
+            { label: "Shopping Help", href: "/support" },
+        ],
+    },
+    Mac: {
+        exploreTitle: "Explore Mac",
+        explore: [
+            { label: "Explore All Mac", href: "/mac" },
+            ...macLineup.map((m) => ({
+                label: m.name,
+                href: m.storeScale != null ? `/mac/${m.slug}` : `/store/${m.slug}`,
+            })),
+        ],
+        moreTitle: "More from Mac",
+        more: [
+            { label: "Compare Mac", href: "/compare" },
+            { label: "Mac Support", href: "/support" },
+        ],
+    },
+    iPad: {
+        exploreTitle: "Explore iPad",
+        explore: [
+            { label: "Explore All iPad", href: "/ipad" },
+            ...ipadLineup.map((m) => ({ label: m.name, href: "/ipad" })),
+        ],
+        moreTitle: "More from iPad",
+        more: [
+            { label: "iPad Support", href: "/support" },
+            { label: "Shop iPad", href: "/store" },
+        ],
+    },
+    iPhone: {
+        exploreTitle: "Explore iPhone",
+        explore: [
+            { label: "Explore All iPhone", href: "/iphone" },
+            ...iphoneLineup.map((m) => ({ label: m.name, href: "/iphone" })),
+        ],
+        moreTitle: "More from iPhone",
+        more: [
+            { label: "iPhone Support", href: "/support" },
+            { label: "Shop iPhone", href: "/store" },
+        ],
+    },
+    Watch: {
+        exploreTitle: "Explore Watch",
+        explore: [
+            { label: "Explore All Apple Watch", href: "/watch" },
+            ...watchLineup.map((m) => ({ label: m.name, href: "/watch" })),
+        ],
+        moreTitle: "More from Watch",
+        more: [
+            { label: "watchOS", href: "/watch" },
+            { label: "Apple Watch Support", href: "/support" },
+        ],
+    },
+    Vision: {
+        exploreTitle: "Explore Vision",
+        explore: [
+            { label: "Explore Vision Pro", href: "/vision" },
+            ...visionLineup.map((m) => ({ label: m.name, href: "/vision" })),
+        ],
+        moreTitle: "More from Vision",
+        more: [
+            { label: "Vision Support", href: "/support" },
+            { label: "Shop Vision Pro", href: "/store" },
+        ],
+    },
+    AirPods: {
+        exploreTitle: "Explore AirPods",
+        explore: [
+            { label: "Explore All AirPods", href: "/airpods" },
+            ...airpodsLineup.map((m) => ({ label: m.name, href: "/airpods" })),
+        ],
+        moreTitle: "More from AirPods",
+        more: [
+            { label: "AirPods Support", href: "/support" },
+            { label: "Shop AirPods", href: "/store" },
+        ],
+    },
+};
+
 // ─────────────────────────────────────────────────────────────────────────────
 
 export {
@@ -919,6 +1015,7 @@ export {
     iphoneLineup,
     macLineup,
     navLinks,
+    navMegaMenus,
     noChangeParts,
     performanceImages,
     performanceImgPositions,

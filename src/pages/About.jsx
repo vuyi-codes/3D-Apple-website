@@ -57,12 +57,25 @@ const About = () => {
         <>
             <main id="about-page">
                 <section id="about-hero">
-                    <p className="about-eyebrow about-hero-animate">About Apple</p>
-                    <h1 className="about-hero-animate">Think different.</h1>
-                    <p className="about-hero-sub about-hero-animate">
-                        We design tools that help people create, connect, and learn —
-                        with privacy, accessibility, and the planet built in from the start.
-                    </p>
+                    <div className="line-hero-media" aria-hidden="true">
+                        <video
+                            src="/videos/about_bg.mp4"
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                        />
+                        <div className="line-hero-overlay" />
+                    </div>
+
+                    <div className="line-hero-content">
+                        <p className="about-eyebrow about-hero-animate">About Apple</p>
+                        <h1 className="about-hero-animate">Think different.</h1>
+                        <p className="about-hero-sub about-hero-animate">
+                            We design tools that help people create, connect, and learn —
+                            with privacy, accessibility, and the planet built in from the start.
+                        </p>
+                    </div>
                 </section>
 
                 <section id="about-values">
