@@ -20,6 +20,7 @@ import clsx from "clsx";
 import StudioLights from "../components/three/StudioLights";
 import ModelSwitcher from "../components/three/ModelSwitcher";
 import Footer from "../components/Footer";
+import FavouriteButton from "../components/FavouriteButton";
 import useMacbookStore from "../store";
 import { macLineup } from "../constants";
 
@@ -200,6 +201,7 @@ const ProductDetail = () => {
                             >
                                 Add to Cart
                             </button>
+                            <FavouriteButton productId={product.id} className="fav-inline" />
                             <Link to="/compare" className="btn-ghost-pill">
                                 Compare models
                             </Link>

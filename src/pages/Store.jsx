@@ -19,6 +19,7 @@ import {
 } from "../constants";
 import useMacbookStore from "../store";
 import Footer from "../components/Footer";
+import FavouriteButton from "../components/FavouriteButton";
 
 const mapLineup = (items, category, hrefFor) =>
     items.map((m) => ({
@@ -80,6 +81,7 @@ const StoreCard = ({ product }) => {
 
     return (
         <article className="store-card">
+            <FavouriteButton productId={product.id} className="fav-on-card" />
             {product.image ? (
                 <div className="mac-card-img">
                     <img src={product.image} alt={product.name} />

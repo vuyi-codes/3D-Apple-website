@@ -11,6 +11,7 @@ import clsx from "clsx";
 import { macLineup, storeAccessories } from "../constants";
 import useMacbookStore from "../store";
 import Footer from "../components/Footer";
+import FavouriteButton from "../components/FavouriteButton";
 
 const detailCatalog = [
     ...storeAccessories,
@@ -124,6 +125,7 @@ const AccessoryDetail = () => {
                         <button type="button" className="btn-primary-pill" onClick={handleAdd}>
                             Add to Bag
                         </button>
+                        <FavouriteButton productId={product.id} className="fav-inline" />
                         <Link to="/store" className="btn-ghost-pill">
                             Back to Store
                         </Link>

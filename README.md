@@ -45,6 +45,8 @@ Apple-inspired frontend experience built with React, Three.js, GSAP, and Tailwin
 
 👉 **Bag & checkout** — add to bag, review cart, and a frontend-only order confirmation  
 
+👉 **Favourites & lists** — save products to multiple named lists (persisted locally), with heart controls on cards/detail and a dedicated `/favourites` page  
+
 👉 **Auth modal** — Sign In, Create Account, Forgot Password (mock flows; show/hide password; OAuth buttons are placeholders)  
 
 👉 **Responsive layout** — mobile nav, adaptive grids, and scroll-friendly sections  

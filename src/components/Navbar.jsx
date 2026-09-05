@@ -4,11 +4,12 @@
 //  - NavLink from React Router with active styles
 //  - Desktop mega-menu dropdown on hover (Store / product lines — not Support)
 //  - Mobile hamburger menu for small screens
-//  - Search, cart, and Sign In stay icon/button-only (no mega menu)
+//  - Search, Favourites, cart, and Sign In stay icon/button-only (no mega menu)
 import { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { navLinks, navMegaMenus } from "../constants";
 import useMacbookStore from "../store";
+import useFavouritesStore from "../store/favourites";
 
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -19,6 +20,12 @@ const Navbar = () => {
     const closeMega = () => setActiveMega(null);
     const { toggleCart, toggleSearch, openAuth, cart } = useMacbookStore();
     const cartCount = cart.reduce((sum, line) => sum + line.qty, 0);
+    const favLists = useFavouritesStore((s) => s.lists);
+    const favCount = (() => {
+        const ids = new Set();
+        favLists.forEach((l) => l.productIds.forEach((id) => ids.add(id)));
+        return ids.size;
+    })();
 
     const mega = activeMega ? navMegaMenus[activeMega] : null;
 
@@ -89,6 +96,24 @@ const Navbar = () => {
                             >
                                 <img src="/search.svg" alt="Search" />
                             </button>
+                            <Link
+                                to="/favourites"
+                                aria-label="Favourites"
+                                className="nav-cart-btn"
+                                onClick={() => {
+                                    closeMenu();
+                                    closeMega();
+                                }}
+                            >
+                                <img
+                                    src={favCount > 0 ? "/heart-filled.svg" : "/heart.svg"}
+                                    alt=""
+                                    aria-hidden="true"
+                                />
+                                {favCount > 0 && (
+                                    <span className="nav-cart-badge">{favCount}</span>
+                                )}
+                            </Link>
                             <button
                                 type="button"
                                 aria-label="Open bag"

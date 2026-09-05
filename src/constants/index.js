@@ -834,6 +834,7 @@ const buildSearchIndex = () => {
         { id: "page-store", type: "Page", title: "Store", blurb: "Shop Mac and accessories", href: "/store" },
         { id: "page-about", type: "Page", title: "About", blurb: "Values and timeline", href: "/about" },
         { id: "page-support", type: "Page", title: "Support", blurb: "Help and FAQs", href: "/support" },
+        { id: "page-favourites", type: "Page", title: "Favourites", blurb: "Saved products and lists", href: "/favourites" },
         { id: "page-signin", type: "Page", title: "Sign In", blurb: "Apple Account sign-in", href: "/signin" },
     ];
 

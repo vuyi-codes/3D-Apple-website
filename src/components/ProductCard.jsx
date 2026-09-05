@@ -1,6 +1,7 @@
 // ProductCard — shared lineup card layout matching Store cards:
 // image → eyebrow/name/tagline/price → Colour swatches → actions.
 import { Link } from "react-router-dom";
+import FavouriteButton from "./FavouriteButton";
 
 /**
  * @param {object} props
@@ -17,11 +18,12 @@ const ProductCard = ({
     primaryLabel = "Learn more",
     secondaryLabel = "Buy →",
 }) => {
-    const { name, chip, highlight, price, monthly, colors, badge, image } = model;
+    const { id, name, chip, highlight, price, monthly, colors, badge, image } = model;
 
     return (
         <article className="mac-card">
             {badge && <span className="mac-card-badge">{badge}</span>}
+            {id && <FavouriteButton productId={id} className="fav-on-card" />}
 
             {image ? (
                 <div className="mac-card-img">

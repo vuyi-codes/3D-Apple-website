@@ -51,6 +51,32 @@ const useMacbookStore = create((set) => ({
         };
     }),
 
+    // Batch add (e.g. whole Favourites list) — opens bag once at the end
+    addManyToCart: (items) => set((state) => {
+        if (!items?.length) return state;
+        let cart = [...state.cart];
+        for (const item of items) {
+            const existing = cart.find(
+                (line) => line.id === item.id && line.color === item.color
+            );
+            if (existing) {
+                cart = cart.map((line) =>
+                    line.id === item.id && line.color === item.color
+                        ? { ...line, qty: line.qty + 1 }
+                        : line
+                );
+            } else {
+                cart = [...cart, { ...item, qty: 1 }];
+            }
+        }
+        return {
+            cart,
+            cartOpen: true,
+            searchOpen: false,
+            authOpen: false,
+        };
+    }),
+
     removeFromCart: (id, color) => set((state) => ({
         cart: state.cart.filter((line) => !(line.id === id && line.color === color)),
     })),
